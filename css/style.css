@@ -1,0 +1,293 @@
+@font-face {
+    font-family: 'asgaltregular';
+    src: url('../font/asgalt-regular/asgalt-regular-webfont.woff2') format('woff2'),
+    url('../font/asgalt-regular/asgalt-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'fishfingersregular';
+    src: url('../font/fishfingers/fishfingers_0-webfont.woff2') format('woff2'),
+    url('../font/fishfingers/fishfingers_0-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bree_serifitalic';
+    src: url('../font/breeserif/breeserif-italic_0-webfont.woff2') format('woff2'),
+    url('../font/breeserif/breeserif-italic_0-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+header{              /* le header commun a toutes les page Admin */
+    height: 300px;
+    background-image: url("../img/white-wood.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.background1 {        /* pour la page accueil visiteur */
+
+    height: 800px;
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.connect {
+
+    right: 30px;
+    top: 22px;
+    font-size: 0.8em;
+    color: white;
+}
+
+.menu {
+
+    display: flex;
+    padding-left: 40%;
+}
+
+nav {
+    border-radius: 10px 10px 10px 10px;
+    background: #003356;
+    height: 100px;
+    width: 100%;
+    opacity: 0.7;
+
+}
+
+nav li {
+    margin-right: 30px;
+    padding-top: 20px;
+    font-size: 1.8em;
+    font-family: 'bree_serifitalic';
+    list-style: none;
+    color: white;
+}
+
+.ancre {
+    text-decoration: none;
+    color: white;
+}
+
+.titre {
+
+    margin-right: 20%;
+    margin-left: 20%;
+    padding-right: 50px;
+    background-color: white;
+    opacity: 0.6;
+    height: 300px;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-size: 4em;
+    font-family: 'bree_serifitalic';
+    margin-top: 150px;
+    padding-top: 50px;
+}
+
+#logo {
+    box-shadow: 8px 8px 11px black;
+    border: ridge #130E0A;
+    background: white;
+    position: fixed;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    margin-left: 88%;
+    margin-top: 10px;
+    text-align: center;
+    padding: 2.5px;
+
+}
+
+h2 {
+    font-family: 'bree_serifitalic';
+    font-size: 2.5em;
+}
+
+article {
+    height: 800px;
+    background: #dde2e6;
+
+}
+
+#Billets {
+    padding-top: 50px;
+    padding-left: 250px;
+}
+
+.line2 {
+    width: 1000px;
+    position: absolute;
+    right: 0px;
+    top: 2075px;
+
+}
+
+.line1 {
+    width: 530px;
+    position: absolute;
+    right: 300px;
+    top: 1230px;
+    border-radius: 2px;
+}
+
+.decoration {
+    float: left;
+    height: 715px;
+    width: 375px;
+    margin-left: 70px;
+    margin-top: 50px;
+    margin-right: 35px;
+}
+
+.billets {
+    font-size: 1.3em;
+    margin-left: 195px;
+}
+
+.color {
+    background-image: url("../img/white-wood.png");
+    height: 1300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text1 {
+    text-align: justify;
+    font-family: 'bree_serifitalic';
+    font-size: 1.8em;
+    padding-top: 20px;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.text {
+
+    text-align: justify;
+    font-family: 'bree_serifitalic';
+    font-size: 1.2em;
+    padding-top: 20px;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.textDetail { /* page detail.phtml */
+
+    font-family: 'bree_serifitalic';
+    color: black;
+    font-size: 2em;
+    text-align: justify;
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.background { /* page detail.phtml */
+
+    height: 900px;
+    background-image: url("../img/wood.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.titreDetail { /* page detail.phtml */
+    padding-top: 20px;
+    padding-right: 10%;
+    color: black;
+    font-size: 4em;
+    font-family: 'bree_serifitalic';
+}
+
+aside {
+    background-color: white;
+    height: 1000px;
+}
+
+#line3 {
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 2px;
+    color: #003356;
+    padding-top: 30px;
+
+}
+
+.linefooter {
+    height: 5px;
+    background-color: #003556;
+}
+
+#border {
+    background-color: #dde2e6;
+    height: 100px;
+
+}
+
+#footer {
+
+    background: #003356;
+    height: 100px;
+    text-align: center;
+    font-family: 'asgaltregular';
+    font-size: 1.5em;
+    color: #dde2e6;
+    padding-top: 30px;
+    margin-bottom: 0;
+}
+
+ul li {
+    display: inline;
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    #logo {
+        background: white;
+        position: fixed;
+        width: 150px;
+        height: 60px;
+        border-radius: 10px / 10px;
+        margin-left: 10PX;
+        margin-top: 10px;
+        text-align: center;
+        padding: 2.5px;
+    }
+
+    .picture {
+        margin-left: 25%;
+    }
+
+    .line1 {
+        display: none;
+    }
+
+    .line2 {
+        display: none;
+    }
+
+    .decoration {
+        display: none;
+    }
+
+
+
+}
