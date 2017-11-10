@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 class AdminManager
 {
 
@@ -9,7 +11,7 @@ class AdminManager
             $_SERVER['is_admin'] = true;
             return true;
         }
-        elseif (isset($_POST['pass']) and $_POST['pass'] == "jean") {
+        elseif (isset($_POST['pass']) and $_POST['pass'] == "livre") {
             $_SESSION['is_admin'] = true;
             return true;
         } else {
