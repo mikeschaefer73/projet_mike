@@ -23,7 +23,9 @@ if (!isset($_SESSION['is_admin']) or $_SESSION['is_admin'] !== true) {
 
 <body>
 <header>
+
     <?php include("header_admin.phtml"); ?>
+
     <h2> Bienvenue Jean Forteroche </h2>
 </header>
 

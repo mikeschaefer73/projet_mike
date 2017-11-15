@@ -1,7 +1,7 @@
 <?php
 require_once(dirname(__FILE__) . '/../Model/ArticleManager.php');
 
-require_once(dirname(__FILE__) . '/../Model/AdminManager.phtml');
+require_once(dirname(__FILE__) . '/../Model/AdminManager.php');
 
 
 class Controller                 // Controller d'appel au fonction

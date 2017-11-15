@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-    <link rel="icon" type="image/png" href="/img/livre.png"/>
-    <title>Article de Jean Forteroche </title>
-</head>
-<body>
-<header class="background">
-    <nav>
-        <ul class="menu">
-            <li><a class="ancre" href="/index.php/">Accueil</a></li>
-            <li><a class="ancre" href="/index.php/#Billets">Billets</a></li>
-        </ul>
-    </nav>
+<!-- header commun a toutes les pages -->
+
+<?php include("header.phtml"); ?>
+
+
+
+
     <h1 class="titreDetail">Billet de Jean</h1>
 
     <p class="textDetail">
@@ -23,10 +14,12 @@
         <?php echo $article['content']; ?>
         <br/>
         <?php echo $article['author']; ?>
+        <br/>
+        <?php echo 'paru le : ' .  $article['date_article']; ?>
     </p>
-</header>
 
 
+<!-- footer commun a toutes les pages -->
 <footer>
     <?php include("footer.phtml"); ?>
 </footer>
