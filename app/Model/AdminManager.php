@@ -11,8 +11,8 @@ class AdminManager
             $_SERVER['is_admin'] = true;
             return true;
         }
-         else {
-             unset($_SESSION['is_admin']);
+        else {
+            unset($_SESSION['is_admin']);
             return false;
         }
 

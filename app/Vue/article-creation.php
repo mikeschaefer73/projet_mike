@@ -7,7 +7,10 @@ if (!isset($_SESSION['is_admin']) or $_SESSION['is_admin'] !== true) {
     $controller = new controller;
     if (!$controller->identify()) {
         exit('Mauvais Mot de Passe !!' . '<br />
-        <p><a href="/index.php/">Retour Accueil </a></p> ');
+        <p><a href="/index.php/">Retour Accueil </a></p>
+        <p><a href="/app/Vue/connect.phtml">Retour page se connecter </a></p>');
+
+
     }
 }
 ?>
