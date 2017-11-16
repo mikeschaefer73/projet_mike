@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="../../css/article-creation.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-    <link rel="icon" type="image/png" href="../../img/livre.png"/>
-    <title>modification des articles </title>
-</head>
 
-<body>
 <header>
-    <?php include("header_admin.phtml"); ?>
+    <?php include("header.phtml"); ?>
 </header>
 
 
