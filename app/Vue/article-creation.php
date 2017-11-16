@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 require_once(dirname(__FILE__) . "/../Controller/Controller.php");
 
@@ -6,7 +9,7 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php");
 if (!isset($_SESSION['is_admin']) or $_SESSION['is_admin'] !== true) {
     $controller = new controller;
     if (!$controller->identify()) {
-        exit('Mauvais Mot de Passe !!' . '<br />
+        exit('<h2>Mauvais Mot de Passe !!' . '</h2> <br/>
         <p><a href="/index.php/">Retour Accueil </a></p>
         <p><a href="/app/Vue/connect.phtml">Retour page se connecter </a></p>');
 
@@ -14,25 +17,17 @@ if (!isset($_SESSION['is_admin']) or $_SESSION['is_admin'] !== true) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="../../css/article-creation.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-    <link rel="icon" type="image/png" href="../../img/livre.png"/>
-    <title>creation article</title>
-</head>
 
-<body>
-<header>
+<!--  header  -->
 
-    <?php include("header_admin.phtml"); ?>
+<?php include("header.phtml"); ?>
 
-    <h2> Bienvenue Jean Forteroche </h2>
-</header>
+<!--  header  -->
+
+<h2> Bienvenue Jean Forteroche </h2>
 
 <br>
+
 <h3>Ecrivons un nouveaux billets !!</h3>
 
 

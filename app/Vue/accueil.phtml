@@ -1,4 +1,5 @@
 <!-- header commun a toutes les pages -->
+
 <?php include("header.phtml"); ?>
 
 <div class="container">
@@ -22,8 +23,7 @@
             <p class="text">Posted by Auteur : <?php echo $article['date_article']; ?></p>
 
             <a class="text" href="detail?article=<?= $article['id']; ?>">detail de l'article</a>
-            <hr>
-            <?php endforeach; ?>
+            <<?php endforeach; ?>
 
 
             <ul class="pagination">
