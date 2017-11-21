@@ -19,14 +19,13 @@ if ($route === "" || !isset($path[2])){
 } elseif ($route === "detail" && isset($_GET['article']) AND !empty($_GET['article']) AND (int)$_GET['article'] > 0) {
     $controller->detail((int)$_GET['article']);// article trouvé !
 }
-elseif ($route === "article-creation.php") {
-    $controller->identify();
+elseif ($route === "connection") {
+    $controller->identify($_POST['pseudo'] ,$_POST['pass'] );
 } elseif ($route === 'save_article'){
     $controller->newArticle();
 } elseif ($route === 'update_articles.phtml'){
         $controller->articleModification();
-}
-else {
+} else {
     var_dump("Page Introuvable");
     die;
 }

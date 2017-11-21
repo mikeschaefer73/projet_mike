@@ -39,18 +39,18 @@ class ArticleManager        //  gestion des articles
 
         $_SESSION['msg'] = 'Article enregistré avec succès !';
 
-        require(dirname(__FILE__) . '/../Vue/article-creation.php');
+        require(dirname(__FILE__) . '/../view/article-creation.php');
     }
 
     public function update_articles(){
-        $response = $this->bdd->prepare('UPDATE article SET (id, title, content, author, date_article) VALUES (?, ?, ?, ? NOW())');
-         if (!$response->execute(array($_POST['id'], $_POST['title'], $_POST['content'], $_POST['author']))) {
+        $response = $this->bdd->prepare('UPDATE article SET ( title, content, author, date_article) VALUES (?, ?, ? NOW())');
+         if (!$response->execute(array($_POST['title'], $_POST['content'], $_POST['author']))) {
              print_r($response->errorInfo());
              exit;
          }
         $_SESSION['msg'] = 'Article modifier avec succès !';
 
-        require(dirname(__FILE__) . '/../Vue/article-modification.php');
+        require(dirname(__FILE__) . '/../view/article-modification.php');
     }
 
     public function delete_Article(){

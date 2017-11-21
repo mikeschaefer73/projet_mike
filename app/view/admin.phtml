@@ -1,0 +1,45 @@
+
+<?php include("Layout-header.phtml"); ?>
+
+
+<div class="titre">
+    <h1> Administration des articles</h1>
+</div>
+
+
+<div class="container-fluid">
+
+            <table class="table-bordered">
+                <tr>
+                    <td>
+                        <p><?php foreach ($articles
+
+                            as $article) ?>
+
+                        <p><?php echo $article['title']; ?></p>
+
+                        <p><?php echo $article['content']; ?></p>
+
+                        <p><?php echo $article['author']; ?></p>
+
+                        <p>Posted by Auteur : <?php echo $article['date_article']; ?></p>
+                    </td>
+
+
+                    <td>
+                        <div class="btn-group-vertical">
+                            <button type="button" class="btn btn-danger">Suprimer</button>
+                            <br>
+                            <button type="button" class="btn btn-success">Modifier</button>
+                        </div>
+                    </td>
+                    </div>
+                </tr>
+            </table>
+
+</div>
+<p><a href="/app/view/article-creation.php">Creation D'articles</a></p>
+
+<?php include("Layout-footer.phtml"); ?>
+
+

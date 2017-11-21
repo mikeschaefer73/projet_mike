@@ -1,6 +1,6 @@
 
 <header>
-    <?php include("header.phtml"); ?>
+    <?php include("Layout-header.phtml"); ?>
 </header>
 
 
@@ -36,7 +36,7 @@
 </table>
 
 <footer>
-    <?php include("footer.phtml"); ?>
+    <?php include("Layout-footer.phtml"); ?>
 </footer>
 
 </body>

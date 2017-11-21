@@ -5,17 +5,15 @@ if(!isset($_SESSION)){
 class AdminManager
 {
 
-    public function checkPassword()               // fonction pour verifier mot de pass
+    public function checkPassword($pseudo, $pass)               // fonction pour verifier mot de pass
     {
-        if (isset($_POST['pseudo']) and $_POST['pseudo'] == 'jean') {
+        if (isset($pseudo) and $pseudo == 'jean' and (isset($pass) and $pass == "livre")) {
             $_SERVER['is_admin'] = true;
             return true;
         }
-        elseif (isset($_POST['pass']) and $_POST['pass'] == "livre") {
-            $_SESSION['is_admin'] = true;
-            return true;
-        } else {
+         else {
             unset($_SESSION['is_admin']);
+
             return false;
         }
 

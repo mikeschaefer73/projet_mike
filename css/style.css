@@ -24,7 +24,7 @@
     font-style: normal;
 }
 
-html, div {
+html {
     margin: 0;
     padding: 0;
     border: 0;
@@ -33,14 +33,6 @@ html, div {
     vertical-align: baseline;
 }
 
-
-.background1 {        /* pour la page accueil visiteur */
-
-    height: 800px;
-    background-image: url("../img/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .connect {
 
@@ -56,15 +48,14 @@ html, div {
     padding-left: 40%;
 }
 
+/* header */
 nav {
-    border-radius: 10px 10px 10px 10px;
-    background: #003356;
+    background: #003556;
     height: 100px;
     width: 100%;
     opacity: 0.7;
-
 }
-
+  /* header */
 nav li {
     margin-right: 30px;
     padding-top: 20px;
@@ -81,13 +72,12 @@ nav li {
 
 .titre {
 
-    margin-right: 20%;
-    margin-left: 20%;
-    padding-right: 50px;
-    background-color: white;
-    opacity: 0.6;
-    height: 300px;
-    border-radius: 20px 20px 20px 20px;
+
+    margin-top: 0px;
+
+
+    height: 700px;
+
 
 }
 
@@ -96,7 +86,7 @@ h1 {
     color: black;
     font-size: 4em;
     font-family: 'bree_serifitalic';
-    margin-top: 150px;
+    margin-top: 50px;
     padding-top: 50px;
 }
 
@@ -161,13 +151,7 @@ article {
     margin-left: 195px;
 }
 
-.color {
-    background-image: url("../img/white-wood.png");
-    height: 1300px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 20px 20px 20px 20px;
-}
+
 
 .text1 {
     text-align: justify;
@@ -199,8 +183,8 @@ article {
     padding-left: 50px;
 }
 
-.background { /* page detail.phtml */
-
+.background1 { /* page detail.phtml */
+    background-image: url("../img/wood.jpg");
     height: 900px;
 }
 
@@ -216,7 +200,7 @@ aside {
     border-radius: 20px 20px 20px 20px;
     box-shadow: 8px 5px 5px #555;
     background-image: url("../img/wood.jpg");
-    height: 1425px;
+    height: 1100px;
 }
 
 #line3 {

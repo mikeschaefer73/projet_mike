@@ -1,6 +1,10 @@
 <!-- header commun a toutes les pages -->
 
-<?php include("header.phtml"); ?>
+<?php include("Layout-header.phtml"); ?>
+<div class="titre">
+    <h1>Billet simple pour<br>l'Alaska</h1>
+</div>
+
 
 <div class="container">
     <aside class="col-lg-12">
@@ -25,22 +29,6 @@
             <a class="text" href="detail?article=<?= $article['id']; ?>">detail de l'article</a>
             <<?php endforeach; ?>
 
-
-            <ul class="pagination">
-
-                <li><a href="#">&laquo;</a></li>
-
-                <li><a href="#">1</a></li>
-
-                <li><a href="#">2</a></li>
-
-                <li><a href="#">3</a></li>
-
-                <li><a href="#">&raquo;</a></li>
-
-            </ul>
-            <div id="demo"></div>
-
             </p>
 
         </div>
@@ -49,20 +37,10 @@
 </div>
 
 
-<script> $('#demo').pagination({
-        dataSource: [1, 2, 3, 4, 5, 6, 7,..., 195
-    ],
-    callback: function (data, pagination) {
-        // template method of yourself
-        var html = template(data);
-        dataContainer.html(html);
-    }
-    })</script>
-
 
 <!-- footer commun a toutes les pages -->
 
-<?php include("footer.phtml"); ?>
+<?php include("Layout-footer.phtml"); ?>
 
 
 </body>
