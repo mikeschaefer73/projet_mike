@@ -53,7 +53,7 @@ nav {
     background: #003556;
     height: 100px;
     width: 100%;
-    opacity: 0.7;
+
 }
   /* header */
 nav li {
@@ -200,7 +200,7 @@ aside {
     border-radius: 20px 20px 20px 20px;
     box-shadow: 8px 5px 5px #555;
     background-image: url("../img/wood.jpg");
-    height: 1100px;
+    height: 1250px;
 }
 
 #line3 {

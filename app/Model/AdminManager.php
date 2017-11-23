@@ -13,8 +13,8 @@ class AdminManager
         }
          else {
             unset($_SESSION['is_admin']);
-
-            return false;
+            echo '<h1> Movais identifiant ou mot de pass !</h1> <br><p><a href="/app/view/connect.phtml">Retour page Connection</a></p> ';
+             return false;
         }
 
     }

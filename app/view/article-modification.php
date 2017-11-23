@@ -4,16 +4,12 @@
 </header>
 
 
-<p> Article Modification <a href="article-creation">Retour</a></p>
+<div class="container">
+    <p><a href="admin.phtml">Retour page Admin</a></p>
 
-
-<h2>modification des articles</h2>
-
-
-</form>
+    <h2>modification des Billets</h2>
 
 <table>
-
     <form method="post" action="update_articles.phtml">
         <label for="id">id</label> : <input type="text" name="id" id="id"/><br/>
         <br>
@@ -23,10 +19,8 @@
             Articles
         </label>
         <br/>
-        <textarea name="content" id="content" rows="15" cols="80"></textarea>
+        <textarea name="content" id="content" rows="15" cols="80"></textarea><br/>
 
-
-        <br/>
         <label for="author">Auteur</label> : <input type="text" name="author" id="author"/><br/>
 
         <input type="submit" name="submit" value="Modifier"/>
@@ -34,10 +28,9 @@
 
     </form>
 </table>
+</div>
 
-<footer>
+
     <?php include("Layout-footer.phtml"); ?>
-</footer>
 
-</body>
-</html>
+
