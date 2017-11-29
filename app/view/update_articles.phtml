@@ -1,8 +1,0 @@
-<?php
-if(!isset($_SESSION)){
-    session_start();
-}
-
-require dirname(__FILE__).'/../Model/ArticleManager.php';   // appel a la fonction uptate seulement si connecter
-$articleManager = new ArticleManager();
-$articleManager->update_articles();

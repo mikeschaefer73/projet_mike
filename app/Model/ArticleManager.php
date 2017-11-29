@@ -42,24 +42,25 @@ class ArticleManager        //  gestion des articles
         require(dirname(__FILE__) . '/../view/article-creation.php');
     }
 
-    public function update_articles(){
-        $response = $this->bdd->prepare('UPDATE article SET ( title, content, author, date_article) VALUES (?, ?, ? NOW())');
-         if (!$response->execute(array($_POST['title'], $_POST['content'], $_POST['author']))) {
+    public function update_articles($id, $title, $content){
+        $response = $this->bdd->prepare("UPDATE article SET  title = :title, content = :content WHERE id = :id");
+         if (!$response->execute(array('title' => $title,
+             'content' => htmlspecialchars($content), 'id' => $id))) {
              print_r($response->errorInfo());
              exit;
          }
         $_SESSION['msg'] = 'Article modifier avec succès !';
 
-        require(dirname(__FILE__) . '/../view/article-modification.php');
     }
 
-    public function delete_Article(){
+    public function delete_Article($id){
         $response = $this->bdd->prepare('DELETE FROM article WHERE id =:idArticle');
-        if (!$response->execute(array($_POST['id']))) {
+        if (!$response->execute(array('idArticle' => $id ))) {
             print_r($response->errorInfo());
             exit;
         }
         $_SESSION['msg'] = 'Article suprimer avec succès !';
+
     }
 
 

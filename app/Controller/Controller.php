@@ -39,11 +39,12 @@ class Controller                 // Controller d'appel au fonction
 
     }
 
-    public function articleModification($id)
+    public function articleModification($id , $title , $content)
     {
         $articleManager = new ArticleManager;
-        $articles = $articleManager->update_articles($id);
-        require_once(dirname(__FILE__) . '/../view/article-modification.php');
+        $article = $articleManager->update_articles($id, $title, $content);
+        $this->Listing_article();
+
 
 
     }
@@ -57,10 +58,12 @@ class Controller                 // Controller d'appel au fonction
 
     }
 
-    public function delete()
+    public function delete($id)
     {
         $articleManager = new ArticleManager;
-        $article = $articleManager->delete_Article();
+        $article = $articleManager->delete_Article($id);
+        $this->Listing_article();
+
     }
 
     public function Listing_article()
@@ -68,6 +71,18 @@ class Controller                 // Controller d'appel au fonction
         $articleManager = new ArticleManager;
         $articles = $articleManager->findAll();
         require_once(dirname(__FILE__) . '/../view/admin.phtml');
+    }
+
+    public function edit($id)
+    {
+        $articleManager = new ArticleManager;
+        $article = $articleManager->find($id);
+        if (!$article) {
+            echo 'ERREUR ! id inconnu !';
+            die;
+        }
+
+        require_once(dirname(__FILE__) . '/../view/article-modification.php');
     }
 
 

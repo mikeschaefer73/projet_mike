@@ -46,8 +46,11 @@ if (!empty($_SESSION['msg'])) {
 </form>
 <p><a href="/app/view/admin.phtml">Retour page d'administration</a></p>
 </div>
+
+
 <footer>
     <?php include("Layout-footer.phtml"); ?>
 </footer>
-</body>
-</html>
+
+
+

@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION)){
+if (!isset($_SESSION)) {
     session_start();
 } ?>
 
@@ -12,32 +12,45 @@ if(!isset($_SESSION)){
 
 
 <div class="container">
+    <table class="table table-bordered">
+        <a href="/app/view/article-creation.php"><button type="button" class="btn btn-primary btn-lg btn-block">Créer un nouvelle article</button><br/>
+        <thead>
+        
+        <tr>
+            <th class="text-center">Titre</th>
+            <th class="text-center">Billets</th>
+            <th class="text-center">Action</th>
+        </tr>
+        </thead>
 
-    <table class="table-bordered">
+
+            <?php foreach ($articles as $article): ?>
+
+
         <tr>
             <td>
-                <p><?php foreach ($articles
+                <p class="text"><?php echo $article['title']; ?></p>
+            </td>
 
-                    as $article) ?>
-
-                <p><?php echo $article['title']; ?></p>
-
+            <td>
                 <p><?php echo $article['content']; ?></p>
-
                 <p><?php echo $article['author']; ?></p>
-
                 <p>Posted by Auteur : <?php echo $article['date_article']; ?></p>
             </td>
-            <td>
-                <div class="btn-group-vertical">
-                    <a href="/app/view/article-creation.php"><button type="button" class="btn btn-primary">Creation Article</button></a>
-                    <a href="/app/view/article-modification.php"><button type="button" class="btn btn-success">Modifier Article</button></a>
-                    <button type="button" class="btn btn-danger">Suprimer</button>
-                </div>
+
+            <td class="text-center">
+                <a href="modification?article=<?= $article['id']; ?>" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-edit"></span>Modifier</a>
+
+                <a href="delete_Billet?article=<?= $article['id']; ?>" name="id" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-remove"></span>Suprimer</a>
             </td>
+
         </tr>
+            <?php endforeach; ?>
+
     </table>
+
 </div>
+
 
 
 

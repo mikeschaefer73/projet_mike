@@ -23,9 +23,14 @@ elseif ($route === "connection") {
     $controller->identify($_POST['pseudo'] ,$_POST['pass'] );
 } elseif ($route === 'save_article'){
     $controller->newArticle();
-} elseif ($route === 'update_articles.phtml'){
-        $controller->articleModification();
-} else {
+} elseif ($route === 'update_articles'){
+        $controller->articleModification($_POST['id'] ,$_POST['title'] ,$_POST['content'] );
+} elseif ($route == "modification" && isset($_GET['article']) AND !empty($_GET['article']) AND (int)$_GET['article'] > 0) {
+     $controller->edit((int)$_GET['article']);
+} elseif ($route == 'delete_Billet'){
+    $controller->delete($_GET['article']);
+}
+else {
     var_dump("Page Introuvable");
     die;
 }
