@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
 
 
 <div class="container">
-    <p><a href="connection">Retour page Admin</a></p>
+    <p><a href='return_admin'>Retour Administration des articles</a></p>
 
     <h2>modification des Billets</h2>
 

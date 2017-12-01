@@ -19,12 +19,7 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php");?>
 
 
 
-<?php
-if (!empty($_SESSION['msg'])) {
-    echo '<h2 style="background:green;color:white;">' . $_SESSION['msg'] . '</h2>';
-    unset($_SESSION['msg']);
-}
-?>
+
 
 
 <form method="post" action="save_article">
@@ -44,7 +39,7 @@ if (!empty($_SESSION['msg'])) {
     </p>
 
 </form>
-<p><a href="/app/view/admin.phtml">Retour page d'administration</a></p>
+    <p><a href='return_admin'>Retour page Admin</a></p>
 </div>
 
 

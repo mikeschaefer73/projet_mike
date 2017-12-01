@@ -10,10 +10,17 @@ if (!isset($_SESSION)) {
     <h1> Administration des articles</h1>
 </div>
 
+<?php
+if (!empty($_SESSION['msg'])) {
+    echo '<h3 style="background:blue;color:white;">' . $_SESSION['msg'] . '</h3>';
+    unset($_SESSION['msg']);
+}
+?>
+
 
 <div class="container">
     <table class="table table-bordered">
-        <a href="/app/view/article-creation.php"><button type="button" class="btn btn-primary btn-lg btn-block">Créer un nouvelle article</button><br/>
+        <a href="save_article"><button type="button" class="btn btn-primary btn-lg btn-block">Créer un nouvelle article</button></a><br/>
         <thead>
         
         <tr>
@@ -33,7 +40,7 @@ if (!isset($_SESSION)) {
             </td>
 
             <td>
-                <p><?php echo $article['content']; ?></p>
+                <p><?php echo html_entity_decode($article['content']); ?></p>
                 <p><?php echo $article['author']; ?></p>
                 <p>Posted by Auteur : <?php echo $article['date_article']; ?></p>
             </td>

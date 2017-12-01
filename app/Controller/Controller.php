@@ -52,6 +52,7 @@ class Controller                 // Controller d'appel au fonction
     public function newArticle()
     {
         $articleManager = new ArticleManager;
+        if (!empty($_POST) && $_POST['title'] && $_POST['content'] && $_POST['author'])
         $articles = $articleManager->insert();
         require_once(dirname(__FILE__) . '/../view/article-creation.php');
 

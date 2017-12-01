@@ -29,6 +29,9 @@ elseif ($route === "connection") {
      $controller->edit((int)$_GET['article']);
 } elseif ($route == 'delete_Billet'){
     $controller->delete($_GET['article']);
+} elseif ($route == 'return_admin'){
+    $controller->Listing_article();
+
 }
 else {
     var_dump("Page Introuvable");
