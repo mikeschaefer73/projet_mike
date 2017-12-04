@@ -13,7 +13,7 @@ class AdminManager
         }
          else {
             unset($_SESSION['is_admin']);
-            echo '<h1> Movais identifiant ou mot de pass !</h1> <br><p><a href="/app/view/connect.phtml">Retour page Connection</a></p> ';
+            echo '<h1 class="text-center"> Movais identifiant ou mot de pass !</h1> <br><p><a href="/app/view/connect.phtml">Retour page Connection</a></p> ';
              return false;
         }
 

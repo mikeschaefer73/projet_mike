@@ -1,18 +1,23 @@
 <!-- header commun a toutes les pages -->
 
-<?php include("Layout-header.phtml"); ?>
-<div class="titre">
-    <h1>Billet simple pour<br>l'Alaska</h1>
+
+
+
+<div class="background1">
+    <?php include("Layout-header.phtml"); ?>
+<div class="titre"><h1>Billet simple pour<br>l'Alaska</h1></div>
 </div>
 
 
-<div class="container">
-    <aside class="col-lg-12">
-        <div class="billets">
+<div class="background">
+    <div class="container">
+        <div class="row">
+        <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="billets">
             <h2 id="Billets">Billets</h2>
-        </div>
+            </div>
 
-        <div class="color">
+            <div class="color">
 
             <p class="border"><?php foreach ($articles
 
@@ -20,27 +25,26 @@
 
             <p class="text1"><?php echo $article['title']; ?></p>
 
-            <p class="text"><?php echo $article['content']; ?></p>
+            <p ><?php echo html_entity_decode($article['content']); ?></p>
+            <p class="text"><?php echo $article['author']; ?>
 
-            <p class="text"><?php echo $article['author']; ?></p>
-
-            <p class="text">Posted by Auteur : <?php echo $article['date_article']; ?></p>
+           Posted by Auteur : <?php echo $article['date_article']; ?></p>
 
             <a class="text" href="detail?article=<?= $article['id']; ?>">detail de l'article</a>
             <?php endforeach; ?>
 
             </p>
-
+            </div>
+        </aside>
         </div>
-    </aside>
-
-</div>
+    </div>
 
 
 
 <!-- footer commun a toutes les pages -->
 
 <?php include("Layout-footer.phtml"); ?>
+</div>
 
 
 </body>

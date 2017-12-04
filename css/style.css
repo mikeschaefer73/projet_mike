@@ -33,7 +33,9 @@ html {
     vertical-align: baseline;
 }
 
-
+.authorDetail{
+    font-size: 0.5em;
+}
 .connect {
 
     right: 30px;
@@ -72,18 +74,14 @@ nav li {
 
 .titre {
 
-
     margin-top: 0px;
-
-
     height: 700px;
-
-
 }
 
 h1 {
     text-align: center;
-    color: black;
+    color: white;
+    text-shadow: 0px 0px 10px #000000;
     font-size: 4em;
     font-family: 'bree_serifitalic';
     margin-top: 50px;
@@ -172,35 +170,41 @@ article {
     padding-left: 100px;
 }
 
-.textDetail { /* page detail.phtml */
+.titre-article { /* page detail.phtml */
 
+    height: 500px;
     font-family: 'bree_serifitalic';
     color: black;
     font-size: 2em;
-    text-align: justify;
     padding-top: 20px;
-    padding-right: 50px;
-    padding-left: 50px;
 }
 
-.background1 { /* page detail.phtml */
-    background-image: url("../img/wood.jpg");
-    height: 900px;
+.background1 { /* page accueil.phtml */
+    background-image: url("../img/alaska.jpg");
+    height: 530px;
+    margin-top: 0px;
+}
+
+.background{
+    background-image: url("../img/leaves.jpg");
+
 }
 
 .titreDetail { /* page detail.phtml */
     padding-top: 20px;
     padding-right: 10%;
     color: black;
-    font-size: 4em;
+    font-size: 3em;
     font-family: 'bree_serifitalic';
 }
 
 aside {
     border-radius: 20px 20px 20px 20px;
-    box-shadow: 8px 5px 5px #555;
+    box-shadow: 10px 10px 7px 6px #555;
     background-image: url("../img/wood.jpg");
-    height: 1250px;
+    background-repeat: no-repeat;
+
+    height: 916px;
 }
 
 #line3 {

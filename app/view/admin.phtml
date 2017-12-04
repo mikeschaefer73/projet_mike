@@ -3,22 +3,26 @@ if (!isset($_SESSION)) {
     session_start();
 } ?>
 
-<?php include("Layout-header.phtml"); ?>
+
 
 
 <div class="titre">
+    <?php include("Layout-header.phtml"); ?>
     <h1> Administration des articles</h1>
-</div>
 
-<?php
-if (!empty($_SESSION['msg'])) {
-    echo '<h3 style="background:blue;color:white;">' . $_SESSION['msg'] . '</h3>';
-    unset($_SESSION['msg']);
-}
-?>
+
+
+
 
 
 <div class="container">
+    <?php
+    if (!empty($_SESSION['msg'])) {
+        echo '<h3 class="text-center" style="background:#003356;color:greenyellow;">' . $_SESSION['msg'] . '</h3>';
+        unset($_SESSION['msg']);
+    }
+    ?>
+
     <table class="table table-bordered">
         <a href="save_article"><button type="button" class="btn btn-primary btn-lg btn-block">Créer un nouvelle article</button></a><br/>
         <thead>
@@ -50,7 +54,7 @@ if (!empty($_SESSION['msg'])) {
 
                 <a href="delete_Billet?article=<?= $article['id']; ?>" name="id" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-remove"></span>Suprimer</a>
             </td>
-
+</div>
         </tr>
             <?php endforeach; ?>
 

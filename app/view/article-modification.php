@@ -9,9 +9,9 @@ if (!isset($_SESSION)) {
 
 
 <div class="container">
-    <p><a href='return_admin'>Retour Administration des articles</a></p>
 
-    <h2>modification des Billets</h2>
+
+    <h2 class="text-center">modification des Billets</h2>
 
 <table>
     <form method="post" action="update_articles">
@@ -20,10 +20,10 @@ if (!isset($_SESSION)) {
 
         <br>
         <input type="hidden" value="<?php echo $article['id']; ?>" name="id"/>
-        <label for="title">Titre</label> : <input value="<?php echo $article['title']; ?>" type="text" name="title" id="title"/><br/>
+        <label for="title"><h4>Titre</h4></label> : <input value="<?php echo $article['title']; ?>" type="text" name="title" id="title"/><br/>
 
 
-        <label for="content">Articles</label>
+        <label for="content"><h4>Articles</h4></label>
 
 
         <br/>
@@ -37,7 +37,7 @@ if (!isset($_SESSION)) {
     </form>
 
 </table>
-
+    <p><a href='return_admin'>Retour page Admin</a></p>
 </div>
 
 

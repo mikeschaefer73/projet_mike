@@ -2,23 +2,26 @@
 
 <?php include("Layout-header.phtml"); ?>
 
-
+<div class="container">
 
 
     <h1 class="titreDetail">Billet de Jean</h1>
-
-    <p class="textDetail">
-        <br>
+<div class="titre-article">
+    <p>
         <?php echo $article['title']; ?>
-        <br/>
-        <?php echo $article['content']; ?>
-        <br/>
-        <?php echo $article['author']; ?>
-        <br/>
+    </p>
+
+        <?php echo html_entity_decode($article['content']); ?>
+
+    <p class="authorDetail">
+        <?php echo $article['author']; ?><br>
+
         <?php echo 'paru le : ' .  $article['date_article']; ?>
     </p>
 
+</div>
 
+</div>
 <!-- footer commun a toutes les pages -->
 
     <?php include("Layout-footer.phtml"); ?>

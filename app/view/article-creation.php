@@ -12,7 +12,7 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php");?>
 
 <!--  header  -->
 <div class="container">
-<h2> Bonjour jean ecrivons un nouveaux billets </h2>
+<h2 class="text-center"> Bonjour jean ecrivons un nouveaux billets </h2>
 
 <br>
 
