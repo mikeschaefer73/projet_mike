@@ -35,6 +35,7 @@ html {
 
 .authorDetail{
     font-size: 0.5em;
+    font-family: 'bree_serifitalic';
 }
 .connect {
 
@@ -185,6 +186,10 @@ article {
     margin-top: 0px;
 }
 
+.background2 {
+    background-image: url("../img/detail-img.jpg");
+}
+
 .background{
     background-image: url("../img/leaves.jpg");
 
@@ -193,7 +198,7 @@ article {
 .titreDetail { /* page detail.phtml */
     padding-top: 20px;
     padding-right: 10%;
-    color: black;
+    text-shadow: 0px 0px 10px #003556;
     font-size: 3em;
     font-family: 'bree_serifitalic';
 }
