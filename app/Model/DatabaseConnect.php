@@ -1,6 +1,6 @@
 <?php
 class Databaseconnect{
-                                                      // fonction de connection a la base de donnée
+                                                      // fonction de connection a la base de donnée //
     public  function getDatabase(){
         try
         {

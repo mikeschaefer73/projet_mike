@@ -36,7 +36,7 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php");?>
     <label for="author"><h4>Auteur</h4></label> : <input type="text" name="author" id="author"/><br/>
 
     <input type="submit" name="submit" value="Poster"/>
-    </p>
+
 
 </form>
     <p><a href='return_admin'>Retour page Admin</a></p>

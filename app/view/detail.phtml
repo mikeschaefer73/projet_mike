@@ -1,34 +1,61 @@
+<?php
+require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
+
 <!-- header commun a toutes les pages -->
-
-
 
 
 <div class="background2">
     <?php include("Layout-header.phtml"); ?>
-<div class="container">
+    <div class="container">
 
 
-    <h1 class="titreDetail">Billet de Jean</h1>
-<div class="titre-article">
-    <p>
-        <?php echo $article['title']; ?>
-    </p>
+        <h1 class="titreDetail">Billet de Jean</h1>
+        <div class="titre-article">
+            <p>
+                <?php echo $article['title']; ?>
+            </p>
 
-        <?php echo html_entity_decode($article['content']); ?>
+            <?php echo html_entity_decode($article['content']); ?>
 
-    <p class="authorDetail">
-        <?php echo $article['author']; ?><br>
+            <p class="authorDetail">
+                <?php echo $article['author']; ?><br>
 
-        <?php echo 'paru le : ' .  $article['date_article']; ?>
-    </p>
+                <?php echo 'paru le : ' . $article['date_article']; ?>
+            </p>
 
-</div>
+            <form method="post" action="save_comment">
 
-</div>
+                <label for="content">
+                    <h4>Laisser un commentaire sur le billet</h4>
+                </label>
+                <br/>
+                <textarea name="content" id="content" rows="5" cols="90"></textarea>
+                <br/>
+                <label for="pseudo"><h4>Pseudo</h4></label> : <input type="text" name="pseudo" id="pseudo"/><br/>
+
+                <input type="submit" name="submit" value="Poster"/>
+            </form>
+
+            <div>
+
+                <?php foreach ($comments as $comment): ?><br>
+
+                    <p><?php echo $comment['pseudo'] ?> le : <?php echo $comment['comment_date'] ?> </p>
+
+                    <?php echo $comment['content']; ?><br>
+
+                <?php endforeach; ?>
+
+            </div>
+
+
+        </div>
+
+    </div>
 </div>
 <!-- footer commun a toutes les pages -->
 
-    <?php include("Layout-footer.phtml"); ?>
+<?php include("Layout-footer.phtml"); ?>
 
 
 

@@ -19,7 +19,7 @@ class ArticleManager        //  gestion des articles
         return $data;
     }
 
-    public function find($id)          // fontion pour affiche 1 raticle
+    public function find($id)          // fontion pour affiche 1 raticle (detail) //
     {
 
         $response = $this->bdd->prepare('SELECT * FROM article WHERE id = :idArticle LIMIT 1');
@@ -42,7 +42,7 @@ class ArticleManager        //  gestion des articles
         require(dirname(__FILE__) . '/../view/article-creation.php');
     }
 
-    public function update_articles($id, $title, $content){
+    public function update_articles($id, $title, $content){               // fonction pour modifier les articles //
         $response = $this->bdd->prepare("UPDATE article SET  title = :title, content = :content WHERE id = :id");
          if (!$response->execute(array('title' => $title,
              'content' => htmlspecialchars($content), 'id' => $id))) {
@@ -53,7 +53,7 @@ class ArticleManager        //  gestion des articles
 
     }
 
-    public function delete_Article($id){
+    public function delete_Article($id){                                 // fonction pour suprimer les articles //
         $response = $this->bdd->prepare('DELETE FROM article WHERE id =:idArticle');
         if (!$response->execute(array('idArticle' => $id ))) {
             print_r($response->errorInfo());
@@ -62,6 +62,17 @@ class ArticleManager        //  gestion des articles
         $_SESSION['msg'] = 'Article suprimer avec succès !';
 
     }
+
+    public function findAllComment($id){
+        $reponse = $this->bdd->prepare('SELECT * FROM commentaire WHERE id_article = :idArticle');
+        $reponse->bindValue('idArticle',$id);
+        $reponse->execute();
+        return $reponse->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+
+
 
 
 

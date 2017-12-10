@@ -31,7 +31,8 @@ elseif ($route === "connection") {
     $controller->delete($_GET['article']);
 } elseif ($route == 'return_admin'){
     $controller->Listing_article();
-
+} elseif ($route == 'save_comment'){
+    $controller->newComment();
 }
 else {
     var_dump("Page Introuvable");

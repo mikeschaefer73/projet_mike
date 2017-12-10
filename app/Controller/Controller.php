@@ -3,8 +3,10 @@ require_once(dirname(__FILE__) . '/../Model/ArticleManager.php');
 
 require_once(dirname(__FILE__) . '/../Model/AdminManager.php');
 
+require_once(dirname(__FILE__) . '/../Model/CommentManager.php');
 
-class Controller                 // Controller d'appel au fonction
+
+class Controller                 // Controller d'appel au fonction pour les articles //
 {
     public function home()
     {  // point entrée .
@@ -15,7 +17,7 @@ class Controller                 // Controller d'appel au fonction
         require(dirname(__FILE__) . '/../view/accueil.phtml');
     }
 
-    public function detail($id)
+    public function detail($id)    // affiche detail des articles
     {
         $articleManager = new ArticleManager;
         $article = $articleManager->find($id);
@@ -23,6 +25,11 @@ class Controller                 // Controller d'appel au fonction
             echo 'ERREUR ! Article inconnu !';
             die;
         }
+        $comments = $articleManager->findAllComment($id);    // affiche detail des commentaire
+        if (!$comments) {
+         echo 'ERREUR ! Commentaire inconnu !';
+         die;
+       }
         require(dirname(__FILE__) . '/../view/detail.phtml');
 
     }
@@ -86,12 +93,23 @@ class Controller                 // Controller d'appel au fonction
         require_once(dirname(__FILE__) . '/../view/article-modification.php');
     }
 
+        // fin du Controller d'appel au fonction pour les articles //
 
 
+        // Controller d'appel au fonction pour les Commentaires //
 
+        public function newComment()
+    {
+        $commentManager = new CommentManager;
+        if (!empty($_POST) && $_POST['pseudo'] && $_POST['content'])
+            $comment = $commentManager->insertComment();
+        else {
+            echo 'veiller a remplir tous les champs !';
+            die;
 
-
-
+        }
+        require_once(dirname(__FILE__). '/../view/detail.phtml');
+    }
 
 
 
