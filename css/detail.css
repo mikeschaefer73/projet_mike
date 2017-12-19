@@ -6,6 +6,15 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'alex_brushregular';
+    src: url('../font/alexbrush-regular/alexbrush-regular-webfont.woff2') format('woff2'),
+    url('../font/alexbrush-regular/alexbrush-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .background2 {
     background-image: url("../img/detail-img.jpg");
 
@@ -46,7 +55,10 @@ table
 
 th{
 
-    background-color: #FED4A2;
+    background-image: url("../img/texture.jpg");
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
 }
 
 .border1 {
@@ -54,8 +66,8 @@ th{
 }
 
 .tableau {
-    
-    background-image: url("../img/wood.jpg");
+
+
 
     border-radius: 10px;
 }
@@ -64,6 +76,20 @@ background3 {
     background-image: url("../img/wood.jpg");
 }
 
+.background4 {
+
+   color: black;
+    font-size: 1.5em;
+}
+
+.bouton1{
+    font-size: 0.8em;
+}
+
+.bouton2{
+    font-size: 0.8em;
+    text-align: right;
+}
 /*
                      <---------------------test ----------------------->
 */

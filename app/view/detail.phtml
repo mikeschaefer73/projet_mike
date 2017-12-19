@@ -61,14 +61,18 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
                     <?php foreach ($comments as $comment): ?>
 
                     <tr>
-                        <td class="background2">
+                        <td class="background4">
                             <p class="text"><?php echo $comment['pseudo'] ?></p>
                         </td>
 
                         <td class="text">
                             <p><?php echo ($comment['content']); ?></p>
-                            <p>Posted : <?php echo $comment['comment_date'] ?></p>
+                            <p class="bouton2">Posted : <?php echo $comment['comment_date'] ?></p>
+                            <form class="bouton1">
+                                <INPUT type="checkbox" name="choix1" value="1"> Signaler ce commentaire
+                            </form>
                         </td>
+
                     </tr>
                 <?php endforeach; ?>
 
