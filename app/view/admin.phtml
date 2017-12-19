@@ -5,64 +5,102 @@ if (!isset($_SESSION)) {
 
 
 
-
-<div class="titre">
+    <div class="background2">
     <?php include("Layout-header.phtml"); ?>
     <h1> Administration des articles</h1>
 
 
+    <div class="container">
+        <?php
+        if (!empty($_SESSION['msg'])) {
+            echo '<h3 class="text-center" style="background:#003356;color:greenyellow;">' . $_SESSION['msg'] . '</h3>';
+            unset($_SESSION['msg']);
+        }
+        ?>
+
+        <table class="table table-bordered">
+            <a href="save_article">
+                <button type="button" class="btn btn-primary btn-lg btn-block btn3d"><span
+                            class="glyphicon glyphicon-ok"></span>Créer un nouvelle article
+                </button>
+            </a><br/>
+            <thead>
+            <tr>
+                <th class="text-center">Titre</th>
+                <th class="text-center">Billet</th>
+                <th class="text-center">Action</th>
+            </tr>
+            </thead>
 
 
+            <?php foreach ($articles
+            as $article): ?>
 
+            <tr>
+                <td>
+                    <p class="text"><?php echo $article['title']; ?></p>
+                </td>
 
-<div class="container">
-    <?php
-    if (!empty($_SESSION['msg'])) {
-        echo '<h3 class="text-center" style="background:#003356;color:greenyellow;">' . $_SESSION['msg'] . '</h3>';
-        unset($_SESSION['msg']);
-    }
-    ?>
+                <td>
+                    <p><?php echo html_entity_decode($article['content']); ?></p>
+                    <p><?php echo $article['author']; ?></p>
+                    <p>Posted by Auteur : <?php echo $article['date_article']; ?></p>
+                </td>
+
+                <td class="text-center">
+                    <a href="modification?article=<?= $article['id']; ?>" class="btn btn-success btn-lg btn3d"><span
+                                class="glyphicon glyphicon-ok"></span>Modifier</a>
+
+                    <a href="delete_Billet?article=<?= $article['id']; ?>" name="id"
+                       class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Suprimer</a>
+                </td>
+    </div>
+    </tr>
+    <?php endforeach; ?>
+    </table>
+
 
     <table class="table table-bordered">
-        <a href="save_article"><button type="button" class="btn btn-primary btn-lg btn-block">Créer un nouvelle article</button></a><br/>
-        <thead>
-        
-        <tr>
-            <th class="text-center">Titre</th>
-            <th class="text-center">Billets</th>
-            <th class="text-center">Action</th>
-        </tr>
-        </thead>
+
+    <h1> Administration des Commentaires</h1>
+    <br/>
+    <thead>
+
+    <tr>
+        <th class="text-center">Pseudo</th>
+        <th class="text-center">Commentaire</th>
+        <th class="text-center">Action</th>
+    </tr>
+    </thead>
 
 
-            <?php foreach ($articles as $article): ?>
+    <?php foreach ($comments as $comment): ?>
 
 
         <tr>
             <td>
-                <p class="text"><?php echo $article['title']; ?></p>
+                <p class="text"><?php echo $comment['pseudo'] ?></p>
             </td>
 
             <td>
-                <p><?php echo html_entity_decode($article['content']); ?></p>
-                <p><?php echo $article['author']; ?></p>
-                <p>Posted by Auteur : <?php echo $article['date_article']; ?></p>
+                <p><?php echo html_entity_decode($comment['content']); ?></p>
+
+                <p>Posted : <?php echo $comment['comment_date'] ?></p>
             </td>
 
             <td class="text-center">
-                <a href="modification?article=<?= $article['id']; ?>" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-edit"></span>Modifier</a>
 
-                <a href="delete_Billet?article=<?= $article['id']; ?>" name="id" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-remove"></span>Suprimer</a>
+
+                <a href="delete_commentaire?comment=<?= $comment['id']; ?>" name="id"
+                   class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Suprimer</a>
             </td>
-</div>
+            </div>
         </tr>
-            <?php endforeach; ?>
+    <?php endforeach; ?>
 
     </table>
 
 </div>
-
-
 
 
 

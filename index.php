@@ -17,7 +17,7 @@ if ($route === "" || !isset($path[2])){
     // TESTE CHAINE DE REQUETTE
     $controller->home();//on demande  à afficher les  articles
 } elseif ($route === "detail" && isset($_GET['article']) AND !empty($_GET['article']) AND (int)$_GET['article'] > 0) {
-    $controller->detail((int)$_GET['article']);// article trouvé !
+    $controller->detail((int)$_GET['article']);  // article trouvé !
 }
 elseif ($route === "connection") {
     $controller->identify($_POST['pseudo'] ,$_POST['pass'] );
@@ -32,7 +32,9 @@ elseif ($route === "connection") {
 } elseif ($route == 'return_admin'){
     $controller->Listing_article();
 } elseif ($route == 'save_comment'){
-    $controller->newComment();
+    $controller->newComment($_POST['pseudo'], $_POST['content'], $_POST['id_article']);
+} elseif ($route == 'delete_commentaire'){
+    $controller->deleteCommentAdmin($_GET['comment']);
 }
 else {
     var_dump("Page Introuvable");

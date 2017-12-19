@@ -7,12 +7,12 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php");?>
 
 
 <!--  header  -->
-
+<div class="background2">
 <?php include("Layout-header.phtml"); ?>
 
 <!--  header  -->
 <div class="container">
-<h2 class="text-center"> Bonjour jean ecrivons un nouveaux billets </h2>
+<h1 class="text-center"> Bonjour jean ecrivons un nouveaux billets </h1>
 
 <br>
 
@@ -33,19 +33,20 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php");?>
 
 
 
-    <label for="author"><h4>Auteur</h4></label> : <input type="text" name="author" id="author"/><br/>
+    <label for="author"><h4>Auteur</h4></label> : <input type="text" name="author" id="author"/><br>
 
-    <input type="submit" name="submit" value="Poster"/>
+    <input class="btn btn-primary btn-lg btn3d glyphicon glyphicon-ok " type="submit" name="submit" value="Poster"/>
 
 
 </form>
     <p><a href='return_admin'>Retour page Admin</a></p>
 </div>
 
-
 <footer>
     <?php include("Layout-footer.phtml"); ?>
 </footer>
+</div>
+
 
 
 

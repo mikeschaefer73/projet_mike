@@ -17,7 +17,8 @@ class Controller                 // Controller d'appel au fonction pour les arti
         require(dirname(__FILE__) . '/../view/accueil.phtml');
     }
 
-    public function detail($id)    // affiche detail des articles
+
+    public function detail($id)                               // affiche detail des articles
     {
         $articleManager = new ArticleManager;
         $article = $articleManager->find($id);
@@ -25,12 +26,13 @@ class Controller                 // Controller d'appel au fonction pour les arti
             echo 'ERREUR ! Article inconnu !';
             die;
         }
-        $comments = $articleManager->findAllComment($id);    // affiche detail des commentaire
+        $comments = $articleManager->findAllComment($id);      // affiche detail des commentaire
         if (!$comments) {
          echo 'ERREUR ! Commentaire inconnu !';
          die;
        }
         require(dirname(__FILE__) . '/../view/detail.phtml');
+
 
     }
 
@@ -42,6 +44,7 @@ class Controller                 // Controller d'appel au fonction pour les arti
            $this->Listing_article();
 
        }
+
 
 
     }
@@ -78,8 +81,11 @@ class Controller                 // Controller d'appel au fonction pour les arti
     {
         $articleManager = new ArticleManager;
         $articles = $articleManager->findAll();
+        $commentManager = new CommentManager;
+        $comments = $commentManager->findAll();
         require_once(dirname(__FILE__) . '/../view/admin.phtml');
     }
+
 
     public function edit($id)
     {
@@ -98,18 +104,32 @@ class Controller                 // Controller d'appel au fonction pour les arti
 
         // Controller d'appel au fonction pour les Commentaires //
 
-        public function newComment()
+        public function newComment($pseudo,$content, $id_article)
     {
         $commentManager = new CommentManager;
-        if (!empty($_POST) && $_POST['pseudo'] && $_POST['content'])
-            $comment = $commentManager->insertComment();
+        if (!empty($_POST) && $_POST['pseudo'] && $_POST['content'] && $_POST['id_article'] &&  !empty($_POST['pseudo']) && !empty($_POST['content']) && !empty($_POST['id_article'])) {
+
+            $comment = $commentManager->insertComment($pseudo, $content, $id_article);
+          unset($_POST);
+        }
+
         else {
             echo 'veiller a remplir tous les champs !';
             die;
+        }
+        $comment = $this->detail($id_article);
+
+    }
+
+        public function deleteCommentAdmin($id)
+        {
+            $commentManager = new CommentManager;
+            $comment = $commentManager->deleteComment($id);
+            $this->Listing_article();
+
 
         }
-        require_once(dirname(__FILE__). '/../view/detail.phtml');
-    }
+
 
 
 

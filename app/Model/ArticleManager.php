@@ -63,7 +63,7 @@ class ArticleManager        //  gestion des articles
 
     }
 
-    public function findAllComment($id){
+    public function findAllComment($id){                                                                    // fontion pour affiche tous les commentaires d'articles .
         $reponse = $this->bdd->prepare('SELECT * FROM commentaire WHERE id_article = :idArticle');
         $reponse->bindValue('idArticle',$id);
         $reponse->execute();

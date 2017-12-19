@@ -3,15 +3,16 @@ if (!isset($_SESSION)) {
     session_start();
 } ?>
 
-<header>
+
+    <div class="background2">
     <?php include("Layout-header.phtml"); ?>
-</header>
+
 
 
 <div class="container">
 
 
-    <h2 class="text-center">modification des Billets</h2>
+    <h1 class="text-center">modification des Billets</h1>
 
 <table>
     <form method="post" action="update_articles">
@@ -31,7 +32,7 @@ if (!isset($_SESSION)) {
 
         <br/>
 
-        <input type="submit" name="submit" value="Modifier"/>
+        <input class="btn btn-primary btn-lg btn3d glyphicon glyphicon-ok " type="submit" name="submit" value="Modifier"/>
         </p>
 
     </form>
@@ -42,5 +43,6 @@ if (!isset($_SESSION)) {
 
 
     <?php include("Layout-footer.phtml"); ?>
+    </div>
 
 
