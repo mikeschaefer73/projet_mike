@@ -13,7 +13,7 @@ $route = $path[2];
 
 // j'instancie mon controller
 $controller = new Controller();
-if ($route === "" || !isset($path[2])){
+if ($route === "" || !isset($route)){
     // TESTE CHAINE DE REQUETTE
     $controller->home();//on demande  à afficher les  articles
 } elseif ($route === "detail" && isset($_GET['article']) AND !empty($_GET['article']) AND (int)$_GET['article'] > 0) {
@@ -35,6 +35,8 @@ elseif ($route === "connection") {
     $controller->newComment($_POST['pseudo'], $_POST['content'], $_POST['id_article']);
 } elseif ($route == 'delete_commentaire'){
     $controller->deleteCommentAdmin($_GET['comment']);
+} elseif ($route == 'signaler'){
+    $controller->signal($_GET['id']);
 }
 else {
     var_dump("Page Introuvable");

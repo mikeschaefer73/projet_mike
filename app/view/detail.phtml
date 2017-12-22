@@ -24,7 +24,7 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
 
     <div>
         <div class="container" style="padding-top:30px">
-
+            <hr>
 
             <div class="row">
                 <div class="span-3 well" style="padding-bottom:0">
@@ -38,14 +38,14 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
                                   rows="6"></textarea>
                         <input type="hidden" name="id_article" id="id_article"
                                value="<?php echo @(int)$_GET['article']; ?>"/>
-                        <h6 class="pull-right">320 characters remaining</h6>
+                        <h6 class="pull-right">Merci pour ce commentaire</h6>
                         <button class="btn btn-primary btn-lg btn3d" type="submit"><span
                                     class="glyphicon glyphicon-ok"></span>Poster</a></button>
                     </form>
 
                 </div>
             </div>
-
+            <hr>
             <h1 class="text-center">Vos Commentaires</h1>
 
             <table class="table table-bordered tableau">
@@ -65,12 +65,14 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
                             <p class="text"><?php echo $comment['pseudo'] ?></p>
                         </td>
 
-                        <td class="text">
+                        <td class="text2">
                             <p><?php echo ($comment['content']); ?></p>
-                            <p class="bouton2">Posted : <?php echo $comment['comment_date'] ?></p>
-                            <form class="bouton1">
-                                <INPUT type="checkbox" name="choix1" value="1"> Signaler ce commentaire
-                            </form>
+                            <p class="bouton2">Poster le : <?php echo $comment['comment_date'] ?></p>
+                            <div class="bouton1">
+                                <a href="signaler?id=<?= $comment['id']; ?>" name="flag"><img src="/img/drapeau.png" class="drapeau" alt="icon_drapeau" /></a> Signaler ce commentaire
+
+                            </div>
+
                         </td>
 
                     </tr>

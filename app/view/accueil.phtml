@@ -26,11 +26,11 @@
             <p class="text1"><?php echo $article['title']; ?></p>
 
             <p ><?php echo html_entity_decode($article['content']); ?></p>
-            <p class="text"><?php echo $article['author']; ?>
+            <p><?php echo $article['author']; ?> <br>
 
-           Posted by Auteur : <?php echo $article['date_article']; ?></p>
+                Poster le : <?php echo $article['date_article']; ?></p>
 
-            <a class="text" href="detail?article=<?= $article['id']; ?>">detail de l'article</a>
+            <a href="detail?article=<?= $article['id']; ?>">detail de l'article</a>
             <?php endforeach; ?>
 
             </p>

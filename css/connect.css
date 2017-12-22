@@ -172,3 +172,7 @@ form.login a:hover
     transition: background-color 0.5s ease;
 }
 
+.retourAccueil {
+    text-align: center;
+    font-size: 1.5em;
+}

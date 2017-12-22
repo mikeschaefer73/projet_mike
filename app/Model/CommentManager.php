@@ -40,6 +40,21 @@ class commentManager
             exit;
         }
         $_SESSION['msg'] = 'Article suprimer avec succès !';
+    }
 
+    public function flag($id){
+        $responce = $this->bdd->prepare("UPDATE commentaire SET  flag = 1 WHERE id =:id");
+        if (!$responce->execute(array('id' => $id))){
+            print_r($responce->errorInfo());
+            exit;
+        }
+    }
+    public function find($id)
+    {
+
+        $response = $this->bdd->prepare('SELECT * FROM commentaire WHERE id = :id LIMIT 1');
+        $response->bindValue('id', $id);
+        $response->execute();
+        return $response->fetch(PDO::FETCH_ASSOC);
     }
 }

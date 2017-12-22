@@ -126,6 +126,15 @@ class Controller                 // Controller d'appel au fonction pour les arti
             $commentManager = new CommentManager;
             $comment = $commentManager->deleteComment($id);
             $this->Listing_article();
+        }
+
+        public function signal($idcommentaire)
+        {
+            $commentManager = new commentManager;
+            $flag = $commentManager->flag($idcommentaire);
+            $comment = $commentManager->find($idcommentaire);
+            $this->detail($comment['id_article']);
+
 
 
         }
