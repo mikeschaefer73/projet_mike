@@ -105,11 +105,18 @@ background3 {
     height:30px;
     border:1px outset silver;
 }
+.erreur_404 {
+    background-image: url("../img/detail-img.jpg");
+    color: #AA0000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
 
+}
 
 
 /*
-                     <---------------------test ----------------------->
+          <---------------------test ----------------------->
 */
 
 /*

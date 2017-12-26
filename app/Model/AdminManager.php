@@ -1,7 +1,7 @@
 <?php
-if(!isset($_SESSION)){
+
     session_start();
-}
+
 class AdminManager
 {
 
@@ -11,9 +11,9 @@ class AdminManager
             $_SERVER['is_admin'] = true;
             return true;
         }
-         else {
+         else { include("./app/view/erreur-login.phtml");
             unset($_SESSION['is_admin']);
-            echo '<h1 class="text-center"> Movais identifiant ou mot de pass !</h1> <br><p><a href="/app/view/connect.phtml">Retour page Connection</a></p> ';
+
              return false;
         }
 

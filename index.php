@@ -37,9 +37,11 @@ elseif ($route === "connection") {
     $controller->deleteCommentAdmin($_GET['comment']);
 } elseif ($route == 'signaler'){
     $controller->signal($_GET['id']);
+} elseif ($route == 'connect_page'){
+    include("./app/view/connect.phtml");
 }
 else {
-    var_dump("Page Introuvable");
+    include("./app/view/404.phtml");
     die;
 }
 

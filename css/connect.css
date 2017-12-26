@@ -176,3 +176,8 @@ form.login a:hover
     text-align: center;
     font-size: 1.5em;
 }
+
+.erreur-login {
+    text-align: center;
+    color: #bd2130;
+}
