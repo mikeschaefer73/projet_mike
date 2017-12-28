@@ -148,7 +148,7 @@ article {
 .text1 {
     text-align: justify;
     font-family: 'bree_serifitalic';
-    font-size: 1.8em;
+    font-size: 1.5em;
     padding-top: 20px;
     padding-right: 100px;
     padding-left: 100px;
@@ -178,19 +178,21 @@ article {
 
 
 .background{
-    background-image: url("../img/leaves.jpg");
+    background-repeat: repeat;
 
+    background-color: #003356;
 }
 
 
 
 aside {
-    border-radius: 20px 20px 20px 20px;
-    box-shadow: 10px 10px 7px 6px #555;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 5px 5px 10px 4px black;
     background-image: url("../img/wood.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    background-attachment: scroll;
 
-    height: 916px;
+
 }
 
 #line3 {
@@ -233,6 +235,20 @@ th{
     text-shadow: 0px 0px 10px #000000;
     color: white;
     font-size: 1.5em;
+}
+.logo
+{
+    background: white;
+    position: fixed;
+    width: 130px;
+    height: 45px;
+    border-radius: 10px / 10px;
+    margin-left: 88%;
+    margin-top: 25px;
+
+    padding: 2.5px;
+
+
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) {

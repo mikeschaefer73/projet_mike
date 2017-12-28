@@ -39,6 +39,10 @@ elseif ($route === "connection") {
     $controller->signal($_GET['id']);
 } elseif ($route == 'connect_page'){
     include("./app/view/connect.phtml");
+} elseif ($route == 'logout'){
+    session_destroy();
+    header('location: /index.php/');
+    exit;
 }
 else {
     include("./app/view/404.phtml");

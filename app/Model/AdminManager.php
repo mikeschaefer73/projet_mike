@@ -8,7 +8,7 @@ class AdminManager
     public function checkPassword($pseudo, $pass)               // fonction pour verifier mot de pass
     {
         if (isset($pseudo) and $pseudo == 'jean' and (isset($pass) and $pass == "livre")) {
-            $_SERVER['is_admin'] = true;
+            $_SESSION['is_admin'] = true;
             return true;
         }
          else { include("./app/view/erreur-login.phtml");

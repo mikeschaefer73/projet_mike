@@ -16,7 +16,12 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
         <p class="authorDetail">
             <?php echo $article['author']; ?><br>
 
-            <?php echo 'paru le : ' . $article['date_article']; ?>
+            <?php echo 'paru le : ' ?>
+            <?php
+            $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $article['date_article']);
+            echo $datef->format('d-m-Y');
+            ?>
+
         </p>
 
     </div>
@@ -67,7 +72,11 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
 
                         <td class="text2">
                             <p><?php echo ($comment['content']); ?></p>
-                            <p class="bouton2">Poster le : <?php echo $comment['comment_date'] ?></p>
+                            <p class="bouton2">Poster le :
+                            <?php
+                            $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
+                            echo $datef->format('d-m-Y');
+                            ?></p>
                             <div class="bouton1">
                                 <a href="signaler?id=<?= $comment['id']; ?>" name="flag"><img src="/img/drapeau.png" class="drapeau" alt="icon_drapeau" /></a> Signaler ce commentaire
 

@@ -49,7 +49,11 @@ if (!isset($_SESSION)) {
                 <td class="text2">
                     <p><?php echo html_entity_decode($article['content']); ?></p>
                     <p><?php echo $article['author']; ?></p>
-                    <p>Posted by Auteur : <?php echo $article['date_article']; ?></p>
+                    <p>Posted by Auteur : <?php
+                $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $article['date_article']);
+                echo $datef->format('d-m-Y');
+                ?></p>
+
                 </td>
 
                 <td class="text-center text2">
@@ -91,7 +95,11 @@ if (!isset($_SESSION)) {
                 <p><?php echo html_entity_decode($comment['content']); ?></p>
 
 
-                <p class="bouton3">Poster le : <?php echo $comment['comment_date'] ?></p>
+                <p class="bouton3">Poster le :
+                <?php
+                $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
+                echo $datef->format('d-m-Y');
+                ?></p>
 
             </td>
 
