@@ -1,0 +1,91 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+
+} ?>
+
+
+<div class="background2">
+    <?php include("Layout-header.phtml"); ?>
+    <h1> Administration des Commentaires</h1>
+
+
+    <div class="container">
+
+        <div class="msg">
+            <?php
+            if (!empty($_SESSION['msg'])) {
+
+                echo '<h3>' . $_SESSION['msg'] . '</h3>';
+                unset($_SESSION['msg']);
+            }
+            ?>
+        </div>
+
+        <td class="text-center text2">
+            <a href="only_article?article=" class="btn btn-info btn-lg btn3d"><span
+                        class="glyphicon glyphicon-ok"></span>Articles</a>
+
+            <a href="only_comment?article=" name="id"
+               class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Commentaires</a>
+
+            <a href="save_article?article=" name="id"
+               class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Créer un nouvelle
+                article</a>
+        </td>
+
+
+        <table class="table table-bordered">
+
+
+            <br/>
+            <thead>
+
+            <tr>
+                <th class="text-center">Pseudo</th>
+                <th class="text-center">Commentaire</th>
+                <th class="text-center">Action</th>
+            </tr>
+            </thead>
+
+
+            <?php foreach ($comments
+
+            as $comment): ?>
+
+
+            <tr>
+                <td class="background4">
+                    <p class="text"><?php echo $comment['pseudo'] ?></p>
+                </td>
+
+                <td class="text2">
+                    <p><?php echo html_entity_decode($comment['content']); ?></p>
+
+
+                    <p class="bouton3">Poster le :
+                        <?php
+                        $datef = DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
+                        echo $datef->format('d-m-Y');
+                        ?></p>
+
+                </td>
+
+                <td class="text-center text2">
+                    <a href="delete_commentaire?comment=<?= $comment['id']; ?>" name="id"
+                       class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Suprimer</a>
+                    <?php if ($comment['flag'] == 1) {
+                        echo '<img src="/img/drapeau.png" class="drapeau" alt="icon_drapeau" />';
+                    } ?>
+                </td>
+    </div>
+    </tr>
+    <?php endforeach; ?>
+
+    </table>
+
+</div>
+
+
+<?php include("Layout-footer.phtml"); ?>
+

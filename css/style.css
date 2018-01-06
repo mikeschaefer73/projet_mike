@@ -35,9 +35,7 @@ html {
 
 
 .connect {
-
-    right: 30px;
-    top: 22px;
+    padding-right: 200px;
     font-size: 0.9em;
     color: white;
 }
@@ -218,7 +216,7 @@ aside {
 #footer {
 
     background: #003356;
-    height: 100px;
+    height: 85px;
     text-align: center;
     font-family: 'asgaltregular';
     font-size: 1.5em;
@@ -238,17 +236,20 @@ th{
 }
 .logo
 {
+    margin-left: 880px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     background: white;
-    position: fixed;
     width: 130px;
     height: 45px;
     border-radius: 10px / 10px;
-    margin-left: 88%;
-    margin-top: 25px;
-
     padding: 2.5px;
+}
 
+.admin_page {
 
+    font-size: 0.9em;
+    color: white;
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) {

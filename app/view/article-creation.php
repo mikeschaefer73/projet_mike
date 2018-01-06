@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-require_once(dirname(__FILE__) . "/../Controller/Controller.php");?>
+require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php");?>
 
 
 <!--  header  -->

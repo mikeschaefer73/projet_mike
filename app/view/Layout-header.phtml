@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/detail.css"/>
     <style type="text/css"></style>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>
+    <script>tinymce.init({selector: 'textarea'});</script>
     <link rel="icon" type="image/png" href="/img/livre.png"/>
     <title>Blog Jean Forteroche</title>
 
@@ -21,19 +21,15 @@
 
 
 <header>
-    <div class="logo">
-        <a href="https://www.facebook.com" target="_blank"><img src="../img/facebook.png" alt="logo" /></a>
-        <a href="https://accounts.google.com" target="_blank"><img src="../img/twitter.png" alt="logo" /></a>
-        <a href="https://twitter.com/?lang=fr" target="_blank"><img src="../img/googleplus.png" alt="logo" /></a>
-    </div>
-        <nav>
-            <ul class="menu">
-                <li><a class="ancre" href="/index.php/">Accueil</a></li>
-                <li><a class="ancre" href="/index.php/#Billets">Billets</a><br/></li>
-                <li><a class="connect" href="/index.php/<?php echo true===@$_SESSION['is_admin'] ? 'logout':'connect_page'; ?>"><?php echo true===@$_SESSION['is_admin'] ? 'Se déconnecter':'Se connecter'; ?></a></li>
-            </ul>
 
-        </nav>
+    <nav>
+        <ul class="menu">
+            <li><a class="ancre" href="/index.php/">Accueil</a></li>
+            <li><a class="ancre" href="/index.php/#Billets">Billets</a><br/></li>
+            <li><a class="connect" href="/index.php/<?php echo true === @$_SESSION['is_admin'] ? 'logout' : 'connect_page'; ?>"><?php echo true === @$_SESSION['is_admin'] ? 'Se déconnecter' : 'Se connecter'; ?></a></li>
+            <li><a class="admin_page" href="return_admin">Admin</a></li>
+        </ul>
+    </nav>
 
 </header>
 

@@ -37,9 +37,9 @@ class commentManager
         $response = $this->bdd->prepare('DELETE FROM commentaire WHERE id =:id');
         if (!$response->execute(array('id' => $id ))) {
             print_r($response->errorInfo());
-            exit;
+            return false;
         }
-        $_SESSION['msg'] = 'Article suprimer avec succès !';
+        $_SESSION['msg'] = 'Commentaire suprimer avec succès !';
     }
 
     public function flag($id){

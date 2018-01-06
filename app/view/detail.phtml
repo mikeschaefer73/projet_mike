@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
+require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
 
 
 <div class="background2">
@@ -71,15 +71,16 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
                         </td>
 
                         <td class="text2">
+
                             <p><?php echo ($comment['content']); ?></p>
                             <p class="bouton2">Poster le :
                             <?php
                             $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
                             echo $datef->format('d-m-Y');
                             ?></p>
+
                             <div class="bouton1">
                                 <a href="signaler?id=<?= $comment['id']; ?>" name="flag"><img src="/img/drapeau.png" class="drapeau" alt="icon_drapeau" /></a> Signaler ce commentaire
-
                             </div>
 
                         </td>
@@ -91,11 +92,14 @@ require_once(dirname(__FILE__) . "/../Controller/Controller.php"); ?>
         </div>
     </div>
 
+    <div class="logo">
+        <a href="https://www.facebook.com" target="_blank"><img src="../img/facebook.png" alt="logo" /></a>
+        <a href="https://accounts.google.com" target="_blank"><img src="../img/twitter.png" alt="logo" /></a>
+        <a href="https://twitter.com/?lang=fr" target="_blank"><img src="../img/googleplus.png" alt="logo" /></a>
+    </div>
 
-    <div>
         <div class="row">
             <div class="col-lg-12">
                 <?php include("Layout-footer.phtml"); ?>
             </div>
         </div>
-    </div>

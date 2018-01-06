@@ -2,7 +2,8 @@
 
 
 // inclusion du controller
-require_once(dirname(__FILE__) . "/app/Controller/Controller.php");
+require_once(dirname(__FILE__) . "/app/Controller/ControllerArticle.php");
+require_once(dirname(__FILE__) . "/app/Controller/controllerComment.php");
 
 
 //Récupere l'URL
@@ -12,40 +13,49 @@ $path = explode("/", $url['path']);
 $route = $path[2];
 
 // j'instancie mon controller
-$controller = new Controller();
+$ControllerArticle = new ControllerArticle();
+$controllerComment = new controllerComment(); //
 if ($route === "" || !isset($route)){
     // TESTE CHAINE DE REQUETTE
-    $controller->home();//on demande  à afficher les  articles
+    $ControllerArticle->home();//on demande  à afficher les  articles
 } elseif ($route === "detail" && isset($_GET['article']) AND !empty($_GET['article']) AND (int)$_GET['article'] > 0) {
-    $controller->detail((int)$_GET['article']);  // article trouvé !
+    $ControllerArticle->detail((int)$_GET['article']);  // article trouvé !
 }
 elseif ($route === "connection") {
-    $controller->identify($_POST['pseudo'] ,$_POST['pass'] );
+    $ControllerArticle->identify($_POST['pseudo'] ,$_POST['pass'] );
 } elseif ($route === 'save_article'){
-    $controller->newArticle();
+    $ControllerArticle->newArticle();
 } elseif ($route === 'update_articles'){
-        $controller->articleModification($_POST['id'] ,$_POST['title'] ,$_POST['content'] );
+    $ControllerArticle->articleModification($_POST['id'] ,$_POST['title'] ,$_POST['content'] );
 } elseif ($route == "modification" && isset($_GET['article']) AND !empty($_GET['article']) AND (int)$_GET['article'] > 0) {
-     $controller->edit((int)$_GET['article']);
+    $ControllerArticle->edit((int)$_GET['article']);
 } elseif ($route == 'delete_Billet'){
-    $controller->delete($_GET['article']);
-} elseif ($route == 'return_admin'){
-    $controller->Listing_article();
+    $ControllerArticle->delete($_GET['article']);
+} elseif ($route == 'return_admin' && $_SESSION == true){
+    $ControllerArticle->Listing_article();
+} elseif ($route == 'return_admin' && !$_SESSION == true){         // verification si admin connecter //
+    $controllerComment->page_connect();
 } elseif ($route == 'save_comment'){
-    $controller->newComment($_POST['pseudo'], $_POST['content'], $_POST['id_article']);
+    $controllerComment->newComment($_POST['pseudo'], $_POST['content'], $_POST['id_article']);
 } elseif ($route == 'delete_commentaire'){
-    $controller->deleteCommentAdmin($_GET['comment']);
+    $controllerComment->delete_CommentAdmin($_GET['comment']);
 } elseif ($route == 'signaler'){
-    $controller->signal($_GET['id']);
+    $controllerComment->signal($_GET['id']);
 } elseif ($route == 'connect_page'){
-    include("./app/view/connect.phtml");
-} elseif ($route == 'logout'){
+    $controllerComment->page_connect();
+} elseif ($route == 'only_article'){
+    $ControllerArticle->buton_only_article();
+} elseif ($route =='only_comment'){
+    $controllerComment->button_only_comment();
+}
+elseif ($route == 'logout'){
     session_destroy();
     header('location: /index.php/');
     exit;
 }
 else {
     include("./app/view/404.phtml");
+    http_response_code(404);
     die;
 }
 

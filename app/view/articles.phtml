@@ -76,52 +76,6 @@ if (!isset($_SESSION)) {
     </table>
 
 
-    <table class="table table-bordered">
-
-    <h1> Administration des Commentaires</h1>
-    <br/>
-    <thead>
-
-    <tr>
-        <th class="text-center">Pseudo</th>
-        <th class="text-center">Commentaire</th>
-        <th class="text-center">Action</th>
-    </tr>
-    </thead>
-
-
-    <?php foreach ($comments as $comment): ?>
-
-
-        <tr>
-            <td class="background4">
-                <p class="text"><?php echo $comment['pseudo'] ?></p>
-            </td>
-
-            <td class="text2">
-                <p><?php echo html_entity_decode($comment['content']); ?></p>
-
-
-                <p class="bouton3">Poster le :
-                <?php
-                $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
-                echo $datef->format('d-m-Y');
-                ?></p>
-
-            </td>
-
-            <td class="text-center text2">
-                <a href="delete_commentaire?comment=<?= $comment['id']; ?>" name="id"
-                   class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Suprimer</a>
-                   <?php if ($comment['flag'] == 1){
-                    echo '<img src="/img/drapeau.png" class="drapeau" alt="icon_drapeau" />';
-                } ?>
-            </td>
-            </div>
-        </tr>
-    <?php endforeach; ?>
-
-    </table>
 
 </div>
 

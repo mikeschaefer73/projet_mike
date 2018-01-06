@@ -6,7 +6,7 @@ require_once(dirname(__FILE__) . '/../Model/AdminManager.php');
 require_once(dirname(__FILE__) . '/../Model/CommentManager.php');
 
 
-class Controller                 // Controller d'appel au fonction pour les articles //
+class ControllerArticle                 // ControllerArticle d'appel au fonction pour les articles //
 {
     public function home()
     {  // point entrée .
@@ -26,35 +26,37 @@ class Controller                 // Controller d'appel au fonction pour les arti
             echo 'ERREUR ! Article inconnu !';
             die;
         }
-        $comments = $articleManager->findAllComment($id);      // affiche detail des commentaire
-        if (!$comments) {
-         echo 'ERREUR ! Commentaire inconnu !';
-         die;
-       }
+        $comments = $articleManager->findAllComment($id);     // affiche detail des commentaire
         require(dirname(__FILE__) . '/../view/detail.phtml');
 
 
     }
 
 
-    public function identify($pseudo , $pass)
+    public function identify($pseudo, $pass)
     {
         $adminManager = new AdminManager;
-       if ($adminManager->checkPassword($pseudo, $pass)){
-           $this->Listing_article();
+        $check_pass = $adminManager->checkPassword($pseudo, $pass);
 
-       }
+        if ($check_pass != null && $pass != null && $check_pass['pass'] == $pass){
+            $_SESSION['is_admin'] = true;
+            $this->Listing_article();
 
 
+
+        } else {
+            include("./app/view/erreur-login.phtml");
+
+
+        }
 
     }
 
-    public function articleModification($id , $title , $content)
+    public function articleModification($id, $title, $content)
     {
         $articleManager = new ArticleManager;
         $article = $articleManager->update_articles($id, $title, $content);
         $this->Listing_article();
-
 
 
     }
@@ -63,7 +65,7 @@ class Controller                 // Controller d'appel au fonction pour les arti
     {
         $articleManager = new ArticleManager;
         if (!empty($_POST) && $_POST['title'] && $_POST['content'] && $_POST['author'])
-        $articles = $articleManager->insert();
+            $articles = $articleManager->insert();
         require_once(dirname(__FILE__) . '/../view/article-creation.php');
 
 
@@ -99,47 +101,15 @@ class Controller                 // Controller d'appel au fonction pour les arti
         require_once(dirname(__FILE__) . '/../view/article-modification.php');
     }
 
-        // fin du Controller d'appel au fonction pour les articles //
-
-
-        // Controller d'appel au fonction pour les Commentaires //
-
-        public function newComment($pseudo,$content, $id_article)
+    public function buton_only_article()          // function pour bouton articles dans page admin .
     {
-        $commentManager = new CommentManager;
-        if (!empty($_POST) && $_POST['pseudo'] && $_POST['content'] && $_POST['id_article'] &&  !empty($_POST['pseudo']) && !empty($_POST['content']) && !empty($_POST['id_article'])) {
-
-            $comment = $commentManager->insertComment($pseudo, $content, $id_article);
-          unset($_POST);
-        }
-
-        else {
-            echo 'veiller a remplir tous les champs !';
-            die;
-        }
-        $comment = $this->detail($id_article);
-
+        $articleManager = new ArticleManager;
+        $articles = $articleManager->findAll();
+        require_once(dirname(__FILE__) . '/../view/articles.phtml');
     }
-
-        public function deleteCommentAdmin($id)
-        {
-            $commentManager = new CommentManager;
-            $comment = $commentManager->deleteComment($id);
-            $this->Listing_article();
-        }
-
-        public function signal($idcommentaire)
-        {
-            $commentManager = new commentManager;
-            $flag = $commentManager->flag($idcommentaire);
-            $comment = $commentManager->find($idcommentaire);
-            $this->detail($comment['id_article']);
-        }
-
-
-
 
 
 
 }
 
+         // fin du ControllerArticle d'appel au fonction pour les articles //

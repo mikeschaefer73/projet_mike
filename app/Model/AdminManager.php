@@ -1,25 +1,38 @@
 <?php
-
+if (!isset($_SESSION)) {
     session_start();
 
+}
+include_once(dirname(__FILE__) . '/../Model/DatabaseConnect.php');
+
 class AdminManager
-{
 
-    public function checkPassword($pseudo, $pass)               // fonction pour verifier mot de pass
+{ private $bdd;
+
+    function __construct()               // fontion pour connecter a la base de donnée automatiquement
     {
-        if (isset($pseudo) and $pseudo == 'jean' and (isset($pass) and $pass == "livre")) {
-            $_SESSION['is_admin'] = true;
-            return true;
-        }
-         else { include("./app/view/erreur-login.phtml");
-            unset($_SESSION['is_admin']);
-
-             return false;
-        }
-
+        $DatabaseConnect = new DatabaseConnect();
+        $this->bdd = $DatabaseConnect->getDatabase();
     }
 
+    public function checkPassword($pseudo ,$pass)
+    {
+       $responce = $this->bdd->prepare('SELECT pass FROM utilisateur WHERE pseudo =:pseudo');
+       $responce->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+       $responce->execute();
+       $data = $responce->fetch();
+
+       return $data;
 
 
+
+       }
+
+
+    
+
+    
 }
+
+
 
