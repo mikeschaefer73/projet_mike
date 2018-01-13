@@ -80,7 +80,14 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
                             ?></p>
 
                             <div class="bouton1">
-                                <a href="signaler?id=<?= $comment['id']; ?>" name="flag"><img src="/img/drapeau.png" class="drapeau" alt="icon_drapeau" /></a> Signaler ce commentaire
+                                <?php if ($comment['flag'] == 0) {
+                                    echo "Signaler ce commentaire"; ?> <a href="signaler?id=<?= $comment['id']; ?>" name="flag"><img src="/img/drapeau.png" class="drapeau" alt="icon_drapeau" /></a><?php
+                                }
+
+                                elseif ($comment['flag'] == 1){
+                                    echo ' Ce commentaire a eté signaler !! <img src="/img/Restricted.ico"  class="drapeau" alt="icon_drapeau"> ';
+                                }?>
+
                             </div>
 
                         </td>

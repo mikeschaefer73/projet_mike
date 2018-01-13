@@ -8,25 +8,32 @@ require_once(dirname(__FILE__) . '/../Model/CommentManager.php');
 
 class ControllerArticle                 // ControllerArticle d'appel au fonction pour les articles //
 {
+
+    protected $articleManager;
+
+    public function __construct()     //  construct  pour instancier  articleManager
+    {
+        $this->articleManager = new ArticleManager();
+    }
+
+
     public function home()
     {  // point entrée .
-        $articleManager = new ArticleManager;
-        $articles = $articleManager->findAll();
 
-        // var_dump($articles); die;
+        $articles = $this->articleManager->findAll();
+
         require(dirname(__FILE__) . '/../view/accueil.phtml');
     }
 
 
     public function detail($id)                               // affiche detail des articles
     {
-        $articleManager = new ArticleManager;
-        $article = $articleManager->find($id);
+        $article = $this->articleManager->find($id);
         if (!$article) {
             echo 'ERREUR ! Article inconnu !';
             die;
         }
-        $comments = $articleManager->findAllComment($id);     // affiche detail des commentaire
+        $comments = $this->articleManager->findAllComment($id);     // affiche detail des commentaire
         require(dirname(__FILE__) . '/../view/detail.phtml');
 
 
@@ -38,15 +45,12 @@ class ControllerArticle                 // ControllerArticle d'appel au fonction
         $adminManager = new AdminManager;
         $check_pass = $adminManager->checkPassword($pseudo, $pass);
 
-        if ($check_pass != null && $pass != null && $check_pass['pass'] == $pass){
+        if ($check_pass != null && $pass != null && $check_pass['pass'] == $pass) {
             $_SESSION['is_admin'] = true;
             $this->Listing_article();
 
-
-
         } else {
             include("./app/view/erreur-login.phtml");
-
 
         }
 
@@ -54,18 +58,15 @@ class ControllerArticle                 // ControllerArticle d'appel au fonction
 
     public function articleModification($id, $title, $content)
     {
-        $articleManager = new ArticleManager;
-        $article = $articleManager->update_articles($id, $title, $content);
+        $article = $this->articleManager->update_articles($id, $title, $content);
         $this->Listing_article();
-
-
     }
 
     public function newArticle()
     {
-        $articleManager = new ArticleManager;
+
         if (!empty($_POST) && $_POST['title'] && $_POST['content'] && $_POST['author'])
-            $articles = $articleManager->insert();
+            $articles = $this->articleManager->insert();
         require_once(dirname(__FILE__) . '/../view/article-creation.php');
 
 
@@ -73,8 +74,8 @@ class ControllerArticle                 // ControllerArticle d'appel au fonction
 
     public function delete($id)
     {
-        $articleManager = new ArticleManager;
-        $article = $articleManager->delete_Article($id);
+
+        $article = $this->articleManager->delete_Article($id);
         $this->Listing_article();
 
     }
@@ -89,10 +90,9 @@ class ControllerArticle                 // ControllerArticle d'appel au fonction
     }
 
 
-    public function edit($id)
+    public function edit($id)              // affiche l'article a modifier .
     {
-        $articleManager = new ArticleManager;
-        $article = $articleManager->find($id);
+        $article = $this->articleManager->find($id);
         if (!$article) {
             echo 'ERREUR ! id inconnu !';
             die;
@@ -103,13 +103,8 @@ class ControllerArticle                 // ControllerArticle d'appel au fonction
 
     public function buton_only_article()          // function pour bouton articles dans page admin .
     {
-        $articleManager = new ArticleManager;
-        $articles = $articleManager->findAll();
+        $articles = $this->articleManager->findAll();
         require_once(dirname(__FILE__) . '/../view/articles.phtml');
     }
 
-
-
 }
-
-         // fin du ControllerArticle d'appel au fonction pour les articles //

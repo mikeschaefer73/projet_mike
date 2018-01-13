@@ -15,6 +15,7 @@ $route = $path[2];
 // j'instancie mon controller
 $ControllerArticle = new ControllerArticle();
 $controllerComment = new controllerComment(); //
+
 if ($route === "" || !isset($route)){
     // TESTE CHAINE DE REQUETTE
     $ControllerArticle->home();//on demande  à afficher les  articles
