@@ -16,7 +16,7 @@ if (!isset($_SESSION)) {
     <h1 class="text-center">modification des Billets</h1>
 
 <table>
-    <form class="form-group" method="post" action="update_articles">
+    <form class="form-group" method="post" action="articleModification">
 
 
 

@@ -22,7 +22,7 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php");?>
 
 
 
-<form class="form-group" method="post" action="save_article">
+<form class="form-group" method="post" action="newArticle">
     <label for="title"><h4>Titre</h4></label> : <input type="text" name="title" id="title"/><br/>
 
     <label for="content">

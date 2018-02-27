@@ -29,7 +29,7 @@ if (!isset($_SESSION)) {
             <a href="only_comment?article=" name="id"
                class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Commentaires</a>
 
-            <a href="save_article?article=" name="id"
+            <a href="newArticle" name="id"
                class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Créer un nouvelle
                 article</a>
         </td>
@@ -72,7 +72,7 @@ if (!isset($_SESSION)) {
                 </td>
 
                 <td class="text-center text2">
-                    <a href="delete_commentaire?comment=<?= $comment['id']; ?>" name="id"
+                    <a href="delete_CommentAdmin?comment=<?= $comment['id']; ?>" name="id"
                        class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Suprimer</a>
                     <?php if ($comment['flag'] == 1) {
                         echo '<img src="/img/Restricted.ico" class="drapeau" alt="icon_drapeau" />';

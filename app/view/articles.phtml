@@ -24,13 +24,13 @@ if (!isset($_SESSION)) {
     </div>
 
     <td class="text-center text2">
-                    <a href="only_article?article=" class="btn btn-info btn-lg btn3d"><span
+                    <a href="only_article" class="btn btn-info btn-lg btn3d"><span
                                 class="glyphicon glyphicon-ok"></span>Articles</a>
 
                     <a href="only_comment?article=" name="id"
                        class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Commentaires</a>
 
-                    <a href="save_article?article=" name="id"
+                    <a href="newArticle" name="id"
                        class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Créer un nouvelle article</a>
     </td>
 
@@ -64,10 +64,10 @@ if (!isset($_SESSION)) {
                 </td>
 
                 <td class="text-center text2">
-                    <a href="modification?article=<?= $article['id']; ?>" class="btn btn-success btn-lg btn3d"><span
+                    <a href="edit?article=<?= $article['id']; ?>" class="btn btn-success btn-lg btn3d"><span
                                 class="glyphicon glyphicon-ok"></span>Modifier</a>
 
-                    <a href="delete_Billet?article=<?= $article['id']; ?>" name="id"
+                    <a href="delete?article=<?= $article['id']; ?>" name="id"
                        class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Suprimer</a>
                 </td>
     </div>

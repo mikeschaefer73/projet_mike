@@ -20,16 +20,17 @@ class controllerComment extends ControllerArticle
 
     public function newComment($pseudo, $content, $id_article)  //  créer commentaire
     {
+        $id_article = intval($_POST['id_article']);
 
         if (!empty($_POST) && $_POST['pseudo'] && $_POST['content'] && $_POST['id_article'] && !empty($_POST['pseudo']) && !empty($_POST['content']) && !empty($_POST['id_article'])) {
-
+            //var_dump($_POST);
             $comment = $this->commentManager->insertComment($pseudo, $content, $id_article);
             unset($_POST);
         } else {
             echo 'veiller a remplir tous les champs !';
-            die;
+
         }
-        
+
         $this->controllerArticle->detail($id_article);
 
     }
@@ -50,11 +51,11 @@ class controllerComment extends ControllerArticle
 
     public function page_connect()                  // function pour afficher page connection.
     {
-        include("./app/view/connect.phtml");
+        include_once("./app/view/connect.phtml");
     }
 
 
-    public function button_only_comment()              // function pour bouton commentaires dans page admin .
+    public function only_comment()              // function pour bouton commentaires dans page admin .
     {
 
         $comments = $this->commentManager->findAll();
