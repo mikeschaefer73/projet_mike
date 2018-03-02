@@ -28,8 +28,8 @@ class ControllerArticle                                       // ControllerArtic
     {
         $article = $this->articleManager->find($id);
         if (!$article) {
-            echo 'ERREUR ! Article inconnu !';
-            die;
+
+            require_once(dirname(__FILE__) . '/../view/404.phtml');
         }
         $comments = $this->articleManager->findAllComment($id);     // affiche detail des commentaire
         require(dirname(__FILE__) . '/../view/detail.phtml');
@@ -39,16 +39,19 @@ class ControllerArticle                                       // ControllerArtic
 
     public function identify()
     {
+        $passIsValid = false;
         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
             $adminManager = new AdminManager;
-            $check_pass = $adminManager->checkPassword($_POST['pseudo'], $_POST['pass']);
+            $passIsValid = $adminManager->checkPassword($_POST['pseudo'], $_POST['pass']);
         }
-        if ($check_pass != null && $_POST != null && $check_pass['pass'] == $_POST['pass']) {
+
+        if ($passIsValid != false && $_POST != null && $passIsValid['pass'] == $_POST['pass']) {
             $_SESSION['is_admin'] = true;
             $this->Listing_article();
 
         } else {
-            include(dirname(__FILE__) . '/../view/erreur-login.phtml');
+            $_SESSION['msg'] = 'Mauvais identifiant ou mot de pass ! !';
+            include(dirname(__FILE__) . '/../view/connect.phtml');
         }
     }
 

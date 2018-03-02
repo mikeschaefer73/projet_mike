@@ -4,48 +4,54 @@ if (!isset($_SESSION)) {
 
 } ?>
 
+<!DOCTYPE html>
+<html>
 
+<?php include("Layout-head.phtml"); ?>
+<body>
 
-    <div class="background2">
+<div class="background2">
     <?php include("Layout-header.phtml"); ?>
-    <h1> Administration des articles</h1>
+    <h1> Administration</h1>
 
 
     <div class="container">
 
-    <div class="msg">
-        <?php
-        if (!empty($_SESSION['msg'])) {
+        <div class="msg">
+            <?php
+            if (!empty($_SESSION['msg'])) {
 
-           echo '<h3>' .$_SESSION['msg']. '</h3>';
-            unset($_SESSION['msg']);
-        }
-        ?>
-    </div>
+                echo '<h3>' . $_SESSION['msg'] . '</h3>';
+                unset($_SESSION['msg']);
+            }
+            ?>
+        </div>
 
-    <td class="text-center text2">
-                    <a href="only_article?article" class="btn btn-info btn-lg btn3d"><span
-                                class="glyphicon glyphicon-ok"></span>Articles</a>
+        <td class="text-center text2">
+            <a href="only_article?article" class="btn btn-info btn-lg btn3d"><span
+                        class="glyphicon glyphicon-ok"></span>Articles</a>
 
-                    <a href="only_comment?article" name="id"
-                       class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Commentaires</a>
+            <a href="only_comment?article" name="id"
+               class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Commentaires</a>
 
-                    <a href="newArticle" name="id"
-                       class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Créer un nouvelle article</a>
-    </td>
+            <a href="newArticle" name="id"
+               class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Créer un nouvelle
+                article</a>
+        </td>
 
         <table class="table table-bordered">
 
-         <thead>
+            <thead>
             <tr>
                 <th class="text-center">Titre</th>
                 <th class="text-center">Billet</th>
                 <th class="text-center">Action</th>
             </tr>
-        </thead>
+            </thead>
 
 
             <?php foreach ($articles
+
             as $article): ?>
 
             <tr>
@@ -57,9 +63,9 @@ if (!isset($_SESSION)) {
                     <p><?php echo html_entity_decode($article['content']); ?></p>
                     <p><?php echo $article['author']; ?></p>
                     <p>Posted by Auteur : <?php
-                $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $article['date_article']);
-                echo $datef->format('d-m-Y');
-                ?></p>
+                        $datef = DateTime::createFromFormat('Y-m-d H:i:s', $article['date_article']);
+                        echo $datef->format('d-m-Y');
+                        ?></p>
 
                 </td>
 
@@ -78,19 +84,21 @@ if (!isset($_SESSION)) {
 
     <table class="table table-bordered">
 
-    <h1> Administration des Commentaires</h1>
-    <br/>
-    <thead>
+        <h1> Administration des Commentaires</h1>
+        <br/>
+        <thead>
 
-    <tr>
-        <th class="text-center">Pseudo</th>
-        <th class="text-center">Commentaire</th>
-        <th class="text-center">Action</th>
-    </tr>
-    </thead>
+        <tr>
+            <th class="text-center">Pseudo</th>
+            <th class="text-center">Commentaire</th>
+            <th class="text-center">Action</th>
+        </tr>
+        </thead>
 
 
-    <?php foreach ($comments as $comment): ?>
+        <?php foreach ($comments
+
+        as $comment): ?>
 
 
         <tr>
@@ -103,29 +111,27 @@ if (!isset($_SESSION)) {
 
 
                 <p class="bouton3">Poster le :
-                <?php
-                $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
-                echo $datef->format('d-m-Y');
-                ?></p>
+                    <?php
+                    $datef = DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
+                    echo $datef->format('d-m-Y');
+                    ?></p>
 
             </td>
 
             <td class="text-center text2">
                 <a href="delete_CommentAdmin?comment=<?= $comment['id']; ?>" name="id"
                    class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span>Suprimer</a>
-                   <?php if ($comment['flag'] == 1){
+                <?php if ($comment['flag'] == 1) {
                     echo '<img src="/img/Restricted.ico" class="drapeau" alt="icon_drapeau" />';
                 } ?>
             </td>
-            </div>
-        </tr>
-    <?php endforeach; ?>
+</div>
+</tr>
+<?php endforeach; ?>
 
-    </table>
+</table>
 
 </div>
-
-
-
 <?php include("Layout-footer.phtml"); ?>
-
+</body>
+</html>

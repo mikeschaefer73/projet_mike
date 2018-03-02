@@ -42,7 +42,6 @@ class ArticleManager                                              //  gestion de
             exit;
         }
         $_SESSION['msg'] = 'Article enregistré avec succès !';
-
         require(dirname(__FILE__) . '/../view/article-creation.php');
     }
 
@@ -85,7 +84,7 @@ class ArticleManager                                              //  gestion de
         if (is_string($id)) {
             $id = intval($id);
         }
-        // fontion pour affiche tous les commentaires d'articles .
+                                                                                                                       // fontion pour affiche tous les commentaires d'articles .
         $reponse = $this->bdd->prepare('SELECT * FROM commentaire WHERE id_article = :idArticle');
         $reponse->bindValue('idArticle', $id);
         $reponse->execute();

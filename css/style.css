@@ -69,6 +69,12 @@ nav li {
 }
 
 
+.erreur-champ {                             /* message erreur page detail */
+    text-align: center;
+    color: red;
+}
+
+
 
 h1 {
     text-align: center;
@@ -147,7 +153,7 @@ article {
     text-align: justify;
     font-family: 'bree_serifitalic';
     font-size: 1.5em;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-right: 100px;
     padding-left: 100px;
 }

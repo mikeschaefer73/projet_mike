@@ -1,15 +1,23 @@
 <?php
 require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
 
+<!DOCTYPE html>
+<html>
+
+<?php include("Layout-head.phtml"); ?>
+
+<body>
 
 <div class="background2">
     <?php include("Layout-header.phtml"); ?>
 
 
     <h1 id="timeline">Billet de Jean</h1>
+
+
     <div class="container">
         <p>
-            <h3><?php echo $article['title']; ?></h3>
+        <h3><?php echo $article['title']; ?></h3>
         </p>
         <h4><?php echo html_entity_decode($article['content']); ?></h4>
 
@@ -18,12 +26,10 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
 
             <?php echo 'paru le : ' ?>
             <?php
-            $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $article['date_article']);
+            $datef = DateTime::createFromFormat('Y-m-d H:i:s', $article['date_article']);
             echo $datef->format('d-m-Y');
             ?>
-
         </p>
-
     </div>
 
 
@@ -36,6 +42,13 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
 
                     <form class="contour" action="newComment" method="post">
                         <label for="content"><h1>Laisser un commentaire</h1></label>
+
+                        <?php
+                        if (!empty($_SESSION['msg'])) {
+                            echo '<h3 class="msg">' .$_SESSION['msg']. '</h3>';
+                            unset($_SESSION['msg']);
+                        }
+                        ?>
                         <label for="pseudo"></label><br>
                         <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo"/>
                         <br>
@@ -63,7 +76,7 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
                 </thead>
 
 
-                    <?php foreach ($comments as $comment): ?>
+                <?php foreach ($comments as $comment): ?>
 
                     <tr>
                         <td class="background4">
@@ -72,21 +85,22 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
 
                         <td class="text2">
 
-                            <p><?php echo ($comment['content']); ?></p>
-                            <p class="bouton2">Poster le :
-                            <?php
-                            $datef =  DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
-                            echo $datef->format('d-m-Y');
-                            ?></p>
+                            <p><?php echo($comment['content']); ?></p>
+                            <p class="bouton2">Posté le :
+                                <?php
+                                $datef = DateTime::createFromFormat('Y-m-d H:i:s', $comment['comment_date']);
+                                echo $datef->format('d-m-Y');
+                                ?></p>
 
                             <div class="bouton1">
                                 <?php if ($comment['flag'] == 0) {
-                                    echo "Signaler ce commentaire"; ?> <a href="signal?id=<?= $comment['id']; ?>" name="flag"><img src="/img/drapeau.png" class="drapeau" alt="icon_drapeau" /></a><?php
-                                }
-
-                                elseif ($comment['flag'] == 1){
+                                    echo "Signaler ce commentaire"; ?> <a href="signal?id=<?= $comment['id']; ?>"
+                                                                          name="flag"><img src="/img/drapeau.png"
+                                                                                           class="drapeau"
+                                                                                           alt="icon_drapeau"/></a><?php
+                                } elseif ($comment['flag'] == 1) {
                                     echo ' Ce commentaire a eté signaler !! <img src="/img/Restricted.ico"  class="drapeau" alt="icon_drapeau"> ';
-                                }?>
+                                } ?>
 
                             </div>
 
@@ -100,13 +114,15 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
     </div>
 
     <div class="logo">
-        <a href="https://www.facebook.com" target="_blank"><img src="../img/facebook.png" alt="logo" /></a>
-        <a href="https://accounts.google.com" target="_blank"><img src="../img/twitter.png" alt="logo" /></a>
-        <a href="https://twitter.com/?lang=fr" target="_blank"><img src="../img/googleplus.png" alt="logo" /></a>
+        <a href="https://www.facebook.com" target="_blank"><img src="../img/facebook.png" alt="logo"/></a>
+        <a href="https://accounts.google.com" target="_blank"><img src="../img/twitter.png" alt="logo"/></a>
+        <a href="https://twitter.com/?lang=fr" target="_blank"><img src="../img/googleplus.png" alt="logo"/></a>
     </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <?php include("Layout-footer.phtml"); ?>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <?php include("Layout-footer.phtml"); ?>
         </div>
+    </div>
+</body>
+</html>

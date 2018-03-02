@@ -23,11 +23,12 @@ class controllerComment extends ControllerArticle
         $id_article = intval($_POST['id_article']);
 
         if (!empty($_POST) && $_POST['pseudo'] && $_POST['content'] && $_POST['id_article'] && !empty($_POST['pseudo']) && !empty($_POST['content']) && !empty($_POST['id_article'])) {
-            //var_dump($_POST);
+
             $comment = $this->commentManager->insertComment($pseudo, $content, $id_article);
             unset($_POST);
         } else {
-            echo 'veiller a remplir tous les champs !';
+            $_SESSION['msg'] = 'veiller a remplir tous les champs !';
+
 
         }
 
@@ -51,6 +52,7 @@ class controllerComment extends ControllerArticle
 
     public function page_connect()                  // function pour afficher page connection.
     {
+
         include_once("./app/view/connect.phtml");
     }
 
