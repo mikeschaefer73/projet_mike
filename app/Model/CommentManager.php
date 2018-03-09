@@ -32,6 +32,7 @@ class commentManager
 
     public function deleteComment($id)                       // fonction pour suprimer les commentaires
     {
+        if($_SESSION == true){
         $id = intval($id['get']['comment']);
         $response = $this->bdd->prepare('DELETE FROM commentaire WHERE id =:id');
         if (!$response->execute(array('id' => $id))) {
@@ -39,6 +40,12 @@ class commentManager
             return false;
         }
         $_SESSION['msg'] = 'Commentaire suprimer avec succès !';
+        } else {
+            $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
+            include("./app/view/404.phtml");
+            http_response_code(404);
+            die;
+        }
     }
 
     public function flag($id)

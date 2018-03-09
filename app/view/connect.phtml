@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +42,7 @@
     </div>
     <?php
     if (!empty($_SESSION['msg'])) {
-        echo '<h1 class="erreur-login">' .$_SESSION['msg']. '</h1>';
+        echo '<h1 class="erreur-login">' . $_SESSION['msg'] . '</h1>';
         unset($_SESSION['msg']);
     }
     ?>

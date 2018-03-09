@@ -35,34 +35,35 @@ class ArticleManager                                              //  gestion de
 
     public function insert($param_arr)    // fontion pour créer article avec retour message
 
-    {   if($_SESSION == true){
-        $response = $this->bdd->prepare('INSERT INTO article (title, content, author, date_article) VALUES(?, ?, ?, NOW())');
-        if (!$response->execute(array($param_arr['post']['title'], $param_arr['post']['content'], $param_arr['post']['author']))) {
-            print_r($response->errorInfo());
-            exit;
+    {
+        if ($_SESSION == true) {
+            $response = $this->bdd->prepare('INSERT INTO article (title, content, author, date_article) VALUES(?, ?, ?, NOW())');
+            if (!$response->execute(array($param_arr['post']['title'], $param_arr['post']['content'], $param_arr['post']['author']))) {
+                print_r($response->errorInfo());
+                exit;
+            }
+            $_SESSION['msg'] = 'Article enregistré avec succès !';
+            require(dirname(__FILE__) . '/../view/article-creation.php');
+        } else {
+            $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
+            include("./app/view/404.phtml");
+            http_response_code(404);
+            die;
         }
-        $_SESSION['msg'] = 'Article enregistré avec succès !';
-        require(dirname(__FILE__) . '/../view/article-creation.php');
-    } else {
-        $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
-        include("./app/view/404.phtml");
-        http_response_code(404);
-        die;
-    }
 
 
     }
 
     public function update_articles($id, $title, $content)  // fonction pour modifier les articles
     {
-        if($_SESSION == true){
-        $response = $this->bdd->prepare("UPDATE article SET  title = :title, content = :content WHERE id = :id");
-        if (!$response->execute(array('title' => $title,
-            'content' => htmlspecialchars($content), 'id' => $id))) {
-            print_r($response->errorInfo());
-            exit;
-        }
-        $_SESSION['msg'] = 'Article modifier avec succès !';
+        if ($_SESSION == true) {
+            $response = $this->bdd->prepare("UPDATE article SET  title = :title, content = :content WHERE id = :id");
+            if (!$response->execute(array('title' => $title,
+                'content' => htmlspecialchars($content), 'id' => $id))) {
+                print_r($response->errorInfo());
+                exit;
+            }
+            $_SESSION['msg'] = 'Article modifier avec succès !';
         } else {
             $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
             include("./app/view/404.phtml");
@@ -74,20 +75,20 @@ class ArticleManager                                              //  gestion de
     public function delete_Article($id)                           // fonction pour suprimer les articles //
 
     {
-        if($_SESSION == true){
-        if (is_array($id)) {
-            $id = intval($id['get']['article']);
-        }
-        if (is_string($id)) {
-            $id = intval($id);
-        }
-        $response = $this->bdd->prepare('DELETE FROM article WHERE id =:idArticle');
-        if (!$response->execute(array('idArticle' => $id))) {
+        if ($_SESSION == true) {
+            if (is_array($id)) {
+                $id = intval($id['get']['article']);
+            }
+            if (is_string($id)) {
+                $id = intval($id);
+            }
+            $response = $this->bdd->prepare('DELETE FROM article WHERE id =:idArticle');
+            if (!$response->execute(array('idArticle' => $id))) {
 
-            print_r($response->errorInfo());
-            exit;
-        }
-        $_SESSION['msg'] = 'Article suprimer avec succès !';
+                print_r($response->errorInfo());
+                exit;
+            }
+            $_SESSION['msg'] = 'Article suprimer avec succès !';
         } else {
             $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
             include("./app/view/404.phtml");
