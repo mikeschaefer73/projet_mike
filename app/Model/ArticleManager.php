@@ -33,9 +33,9 @@ class ArticleManager                                              //  gestion de
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function insert($param_arr)                          // fontion pour créer article avec retour message
-    {
+    public function insert($param_arr)    // fontion pour créer article avec retour message
 
+    {   if($_SESSION == true){
         $response = $this->bdd->prepare('INSERT INTO article (title, content, author, date_article) VALUES(?, ?, ?, NOW())');
         if (!$response->execute(array($param_arr['post']['title'], $param_arr['post']['content'], $param_arr['post']['author']))) {
             print_r($response->errorInfo());
@@ -43,10 +43,19 @@ class ArticleManager                                              //  gestion de
         }
         $_SESSION['msg'] = 'Article enregistré avec succès !';
         require(dirname(__FILE__) . '/../view/article-creation.php');
+    } else {
+        $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
+        include("./app/view/404.phtml");
+        http_response_code(404);
+        die;
     }
 
-    public function update_articles($id, $title, $content)                                                                // fonction pour modifier les articles
+
+    }
+
+    public function update_articles($id, $title, $content)  // fonction pour modifier les articles
     {
+        if($_SESSION == true){
         $response = $this->bdd->prepare("UPDATE article SET  title = :title, content = :content WHERE id = :id");
         if (!$response->execute(array('title' => $title,
             'content' => htmlspecialchars($content), 'id' => $id))) {
@@ -54,17 +63,24 @@ class ArticleManager                                              //  gestion de
             exit;
         }
         $_SESSION['msg'] = 'Article modifier avec succès !';
-
+        } else {
+            $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
+            include("./app/view/404.phtml");
+            http_response_code(404);
+            die;
+        }
     }
 
-    public function delete_Article($id)
+    public function delete_Article($id)                           // fonction pour suprimer les articles //
+
     {
+        if($_SESSION == true){
         if (is_array($id)) {
             $id = intval($id['get']['article']);
         }
         if (is_string($id)) {
             $id = intval($id);
-        }                                                                                                                    // fonction pour suprimer les articles //
+        }
         $response = $this->bdd->prepare('DELETE FROM article WHERE id =:idArticle');
         if (!$response->execute(array('idArticle' => $id))) {
 
@@ -72,10 +88,15 @@ class ArticleManager                                              //  gestion de
             exit;
         }
         $_SESSION['msg'] = 'Article suprimer avec succès !';
-
+        } else {
+            $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
+            include("./app/view/404.phtml");
+            http_response_code(404);
+            die;
+        }
     }
 
-    public function findAllComment($id)
+    public function findAllComment($id)                          // fontion pour affiche tous les commentaires d'articles .
     {
 
         if (is_array($id)) {
@@ -84,7 +105,7 @@ class ArticleManager                                              //  gestion de
         if (is_string($id)) {
             $id = intval($id);
         }
-                                                                                                                       // fontion pour affiche tous les commentaires d'articles .
+
         $reponse = $this->bdd->prepare('SELECT * FROM commentaire WHERE id_article = :idArticle');
         $reponse->bindValue('idArticle', $id);
         $reponse->execute();

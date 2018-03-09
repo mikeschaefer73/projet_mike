@@ -27,11 +27,10 @@ class controllerComment extends ControllerArticle
             $comment = $this->commentManager->insertComment($pseudo, $content, $id_article);
             unset($_POST);
         } else {
-            $_SESSION['msg'] = 'veiller a remplir tous les champs !';
+            $_SESSION['msg'] = 'veuiller remplir tous les champs !';
 
 
         }
-
         $this->controllerArticle->detail($id_article);
 
     }
