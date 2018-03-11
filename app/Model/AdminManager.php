@@ -8,7 +8,7 @@ include_once(dirname(__FILE__) . '/../Model/DatabaseConnect.php');
 class AdminManager
 
 {
-    private $bdd;           // fontion pour connecter a la base de donnée automatiquement
+    private $bdd;                                                  // fontion pour connecter a la base de donnée automatiquement
 
     function __construct()
     {

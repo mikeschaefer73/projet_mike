@@ -63,6 +63,23 @@ nav li {
     color: white;
 }
 
+
+.cadre {
+    border-radius: 20px;
+    border: 2px silver outset;
+    margin-left: 300px;
+    margin-right: 300PX ;
+    background-image: url("../img/wood.jpg");
+}
+
+.cadre2 {
+    border-radius: 20px;
+    border: 2px silver outset;
+    margin-left: 200px;
+    margin-right: 200PX ;
+    background-image: url("../img/wood.jpg");
+}
+
 .ancre {
     text-decoration: none;
     color: white;

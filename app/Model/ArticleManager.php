@@ -1,11 +1,11 @@
 <?php
 include_once(dirname(__FILE__) . '/../Model/DatabaseConnect.php');
 
-class ArticleManager                                              //  gestion des articles
+class ArticleManager                                                 //  gestion des articles
 {
     private $bdd;
 
-    function __construct()                                       // fontion pour connecter a la base de donnée automatiquement
+    function __construct()                                          // fontion pour connecter a la base de donnée automatiquement
     {
         $DatabaseConnect = new DatabaseConnect();
         $this->bdd = $DatabaseConnect->getDatabase();
@@ -18,7 +18,7 @@ class ArticleManager                                              //  gestion de
         return $data;
     }
 
-    public function find($id)                                    // fontion pour affiche 1 article (detail) //
+    public function find($id)                                     // fontion pour affiche 1 article (detail) //
     {
         if (is_array($id)) {
             $id = intval($id['get']['article']);
@@ -33,7 +33,7 @@ class ArticleManager                                              //  gestion de
         return $response->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function insert($param_arr)    // fontion pour créer article avec retour message
+    public function insert($param_arr)                           // fontion pour créer article avec retour message
 
     {
         if ($_SESSION == true) {
@@ -54,7 +54,7 @@ class ArticleManager                                              //  gestion de
 
     }
 
-    public function update_articles($id, $title, $content)  // fonction pour modifier les articles
+    public function update_articles($id, $title, $content)        // fonction pour modifier les articles
     {
         if ($_SESSION == true) {
             $response = $this->bdd->prepare("UPDATE article SET  title = :title, content = :content WHERE id = :id");

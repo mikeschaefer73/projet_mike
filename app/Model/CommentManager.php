@@ -7,7 +7,7 @@ class commentManager
 {
     private $bdd;
 
-    function __construct()                                                     // fontion pour connecter a la base de donnée automatiquement
+    function __construct()                                                       // fontion pour connecter a la base de donnée automatiquement
     {
         $DatabaseConnect = new DatabaseConnect();
         $this->bdd = $DatabaseConnect->getDatabase();
@@ -30,7 +30,7 @@ class commentManager
         return $data;
     }
 
-    public function deleteComment($id)                       // fonction pour suprimer les commentaires
+    public function deleteComment($id)                                         // fonction pour suprimer les commentaires
     {
         if($_SESSION == true){
         $id = intval($id['get']['comment']);
@@ -48,7 +48,7 @@ class commentManager
         }
     }
 
-    public function flag($id)
+    public function flag($id)                                                  //  fonction pour sygnaler commentaire
     {
         $id = intval($id['get']['id']);
         $responce = $this->bdd->prepare("UPDATE commentaire SET  flag = 1 WHERE id =:id");
@@ -58,7 +58,7 @@ class commentManager
         }
     }
 
-    public function find($id)
+    public function find($id)                                                // fonction pour afficher commentaire
     {
         $id = intval($id['get']['id']);
         $response = $this->bdd->prepare('SELECT * FROM commentaire WHERE id = :id LIMIT 1');

@@ -1,6 +1,6 @@
 <?php
 
-class Databaseconnect                // fonction de connection a la base de donnée
+class Databaseconnect
 {
 
     public function getDatabase()
@@ -11,6 +11,6 @@ class Databaseconnect                // fonction de connection a la base de donn
             die('Erreur : ' . $e->getMessage());
         }
         return $bdd;
-    }
+    }           // fonction de connection a la base de donnée
 }
 

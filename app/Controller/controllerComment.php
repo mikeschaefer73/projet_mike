@@ -18,7 +18,7 @@ class controllerComment extends ControllerArticle
 
     }
 
-    public function newComment($pseudo, $content, $id_article)  //  créer commentaire
+    public function newComment($pseudo, $content, $id_article)            //  créer commentaire
     {
         $id_article = intval($_POST['id_article']);
 
@@ -49,14 +49,14 @@ class controllerComment extends ControllerArticle
         $this->controllerArticle->detail($comment['id_article']);
     }
 
-    public function page_connect()                  // function pour afficher page connection.
+    public function page_connect()                                      // function pour afficher page connection.
     {
 
         include_once("./app/view/connect.phtml");
     }
 
 
-    public function only_comment()              // function pour bouton commentaires dans page admin .
+    public function only_comment()                                     // function pour bouton commentaires dans page admin .
     {
 
         $comments = $this->commentManager->findAll();
