@@ -46,7 +46,7 @@ class ArticleManager                                                 //  gestion
             require(dirname(__FILE__) . '/../view/article-creation.php');
         } else {
             $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
-            include("./app/view/404.phtml");
+            include("./app/view/404.php");
             http_response_code(404);
             die;
         }
@@ -54,7 +54,7 @@ class ArticleManager                                                 //  gestion
 
     }
 
-    public function update_articles($id, $title, $content)        // fonction pour modifier les articles
+    public function updateArticles($id, $title, $content)        // fonction pour modifier les articles
     {
         if ($_SESSION == true) {
             $response = $this->bdd->prepare("UPDATE article SET  title = :title, content = :content WHERE id = :id");
@@ -63,16 +63,16 @@ class ArticleManager                                                 //  gestion
                 print_r($response->errorInfo());
                 exit;
             }
-            $_SESSION['msg'] = 'Article modifier avec succès !';
+            $_SESSION['msg'] = 'Article modifié avec succès ! !';
         } else {
-            $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
-            include("./app/view/404.phtml");
+            $_SESSION['msg'] = 'Vous n\'êtes pas connecté en administrateur !';
+            include("./app/view/404.php");
             http_response_code(404);
             die;
         }
     }
 
-    public function delete_Article($id)                           // fonction pour suprimer les articles //
+    public function deleteArticle($id)                           // fonction pour suprimer les articles //
 
     {
         if ($_SESSION == true) {
@@ -88,10 +88,10 @@ class ArticleManager                                                 //  gestion
                 print_r($response->errorInfo());
                 exit;
             }
-            $_SESSION['msg'] = 'Article suprimer avec succès !';
+            $_SESSION['msg'] = 'Article supprimé avec succès !';
         } else {
-            $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
-            include("./app/view/404.phtml");
+            $_SESSION['msg'] = 'Vous n\'êtes pas connecté en administrateur !';
+            include("./app/view/404.php");
             http_response_code(404);
             die;
         }

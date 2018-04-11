@@ -6,7 +6,7 @@ require_once(dirname(__FILE__) . '/../Model/AdminManager.php');
 require_once(dirname(__FILE__) . '/../Model/CommentManager.php');
 
 
-class controllerComment extends ControllerArticle
+class ControllerComment extends ControllerArticle
 {
     protected $commentManager;
     protected $controllerArticle;
@@ -25,9 +25,11 @@ class controllerComment extends ControllerArticle
         if (!empty($_POST) && $_POST['pseudo'] && $_POST['content'] && $_POST['id_article'] && !empty($_POST['pseudo']) && !empty($_POST['content']) && !empty($_POST['id_article'])) {
 
             $comment = $this->commentManager->insertComment($pseudo, $content, $id_article);
+
             unset($_POST);
+            $_SESSION['msg'] = 'Commentaire enregistré avec succès ! !';
         } else {
-            $_SESSION['msg'] = 'veuiller remplir tous les champs !';
+            $_SESSION['msg'] = 'Veuillez remplir tous les champs !';
 
 
         }
@@ -35,11 +37,11 @@ class controllerComment extends ControllerArticle
 
     }
 
-    public function delete_CommentAdmin($id)
+    public function deleteCommentAdmin($id)
     {
 
         $comment = $this->commentManager->deleteComment($id);
-        $this->Listing_article();
+        $this->ListingArticle();
     }
 
     public function signal($idcommentaire)
@@ -49,20 +51,30 @@ class controllerComment extends ControllerArticle
         $this->controllerArticle->detail($comment['id_article']);
     }
 
-    public function page_connect()                                      // function pour afficher page connection.
+    public function deSignal($idcommentaire)
     {
-
-        include_once("./app/view/connect.phtml");
+        $flag = $this->commentManager->deFlag($idcommentaire);
+        $comment = $this->commentManager->find($idcommentaire);
+        $this->controllerArticle->detail($comment['id_article']);
     }
 
+    public function pageConnect()                                      // function pour afficher page connection.
+    {
+
+        include_once("./app/view/connect.php");
+    }
+
+    public function adminParameter()
+    {
+        include_once("./app/view/parameter-admin.php");
+    }
 
     public function only_comment()                                     // function pour bouton commentaires dans page admin .
     {
 
         $comments = $this->commentManager->findAll();
-        require_once(dirname(__FILE__) . '/../view/commentaires.phtml');
+        require_once(dirname(__FILE__) . '/../view/commentaires.php');
     }
-
 
 }
 

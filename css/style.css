@@ -179,17 +179,17 @@ article {
 
     text-align: justify;
     font-family: 'bree_serifitalic';
-    font-size: 1.3em;
+    font-size: 1em;
     padding-top: 20px;
     padding-right: 100px;
     padding-left: 100px;
-    background-color: #FACDA6;
+    background-color: #fff4df;
 
 }
 
 
 
-.background1 { /* page accueil.phtml */
+.background1 { /* page accueil.php */
     background-image: url("../img/alaska.jpg");
     height: 530px;
     margin-top: 0px;

@@ -25,6 +25,24 @@ class AdminManager
 
         return $data;
     }
+
+    public function changePassword($id, $pseudo,$pass)
+    {
+        if ($_SESSION == true) {
+            $response = $this->bdd->prepare("UPDATE utilisateur SET  pseudo = :pseudo, pass = :pass WHERE id = :id");
+            if (!$response->execute(array('pseudo' => $pseudo, 'pass' => $pass, 'id' => $id,))) {
+                print_r($response->errorInfo());
+                exit;
+            }
+            $_SESSION['msg'] = 'mot de passe modifié avec succès ! !';
+        } else {
+            $_SESSION['msg'] = 'Vous n\'êtes pas connecté en administrateur !';
+            include("./app/view/404.php");
+            http_response_code(404);
+            die;
+        }
+    }
+
 }
 
 

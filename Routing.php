@@ -32,7 +32,6 @@ class routing extends ControllerArticle
         if ($this->route == '' || $this->route == 'home') {
             $this->ControllerArticle->home();
             return;
-
         }
         if ($this->route == 'logout') {
 
@@ -41,13 +40,16 @@ class routing extends ControllerArticle
             return;
 
         }
-        if ($this->route == 'return_admin' && $_SESSION == true) {
-            $this->ControllerArticle->Listing_article();
+        if ($this->route == 'newPassword'){
+            $this->ControllerArticle->newPassword();
             return;
-
+        }
+        if ($this->route == 'return_admin' && $_SESSION == true) {
+            $this->ControllerArticle->listingArticle();
+            return;
         }
         if ($this->route == 'return_admin' && !$_SESSION == true) {         // verification si admin connecter //
-            $this->controllerComment->page_connect();
+            $this->controllerComment->pageConnect();
             return;
         } elseif (method_exists($this->ControllerArticle, $this->route)) {
 
@@ -79,7 +81,7 @@ class routing extends ControllerArticle
 
 
         } else {
-            include("./app/view/404.phtml");
+            include("./app/view/404.php");
             http_response_code(404);
             die;
 

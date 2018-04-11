@@ -20,7 +20,7 @@ class ControllerArticle                                         // ControllerArt
     public function home()                                    // point entrée .
     {
         $articles = $this->articleManager->findAll();
-        require(dirname(__FILE__) . '/../view/accueil.phtml');
+        require(dirname(__FILE__) . '/../view/accueil.php');
     }
 
 
@@ -29,10 +29,10 @@ class ControllerArticle                                         // ControllerArt
         $article = $this->articleManager->find($id);
         if (!$article) {
 
-            require_once(dirname(__FILE__) . '/../view/404.phtml');
+            require_once(dirname(__FILE__) . '/../view/404.php');
         }
-        $comments = $this->articleManager->findAllComment($id);     // affiche detail des commentaire
-        require(dirname(__FILE__) . '/../view/detail.phtml');
+        $comments = $this->articleManager->findAllComment($id);     // affiche detail des commentaires
+        require(dirname(__FILE__) . '/../view/detail.php');
 
     }
 
@@ -47,47 +47,59 @@ class ControllerArticle                                         // ControllerArt
 
         if ($passIsValid != false && $_POST != null && $passIsValid['pass'] == $_POST['pass']) {
             $_SESSION['is_admin'] = true;
-            $this->Listing_article();
+            $this->ListingArticle();
 
         } else {
             $_SESSION['msg'] = 'Mauvais identifiant ou mot de pass ! !';
-            include(dirname(__FILE__) . '/../view/connect.phtml');
+            include(dirname(__FILE__) . '/../view/connect.php');
         }
+    }
+
+    public function newPassword()
+    {
+            if (!empty($_POST['pseudo']) && (!empty($_POST['pass']))) {
+            $adminManager = new AdminManager;
+            $adminManager->changePassword($_POST['id'], $_POST['pseudo'],$_POST['pass']);
+
+            } else {
+                $_SESSION['msg'] = 'Tous les champs ne sont pas remplis';
+            } include(dirname(__FILE__) . '/../view/parameter-admin.php');
     }
 
     public function articleModification()
     {
-        $article = $this->articleManager->update_articles($_POST['id'], $_POST['title'], $_POST['content']);
-        $this->Listing_article();
+        $article = $this->articleManager->updateArticles($_POST['id'], $_POST['title'], $_POST['content']);
+        $this->ListingArticle();
     }
 
     public function newArticle($param_arr)
     {
 
-        if (!empty($param_arr) && $param_arr['post']['title'] && $param_arr['post']['content'] && $param_arr['post']['author']) {
+        if (!empty($param_arr) && ($param_arr['post']['title'] && ($param_arr['post']['content'] && ($param_arr['post']['author'])))) {
             $articles = $this->articleManager->insert($param_arr);
 
-        }
-
-        require_once(dirname(__FILE__) . '/../view/article-creation.php');
-
-
+        } else if (!empty($param_arr) && empty($param_arr['post']['title'] && empty($param_arr['post']['content'] && empty($param_arr['post']['author'])))){
+            $_SESSION['msg'] = 'Tous les champs ne sont pas remplis';
+            $title = $param_arr['post']['title'];
+            $content = $param_arr['post']['content'];
+            $author = $param_arr['post']['author'];
+        } require_once(dirname(__FILE__) . '/../view/article-creation.php');
     }
 
     public function delete($id)
     {
 
-        $article = $this->articleManager->delete_Article($id);
-        $this->Listing_article();
+        $article = $this->articleManager->deleteArticle($id);
+        $this->listingArticle();
     }
 
-    public function Listing_article()
+    public function listingArticle()
     {
         $articleManager = new ArticleManager;
         $articles = $articleManager->findAll();
         $commentManager = new CommentManager;
         $comments = $commentManager->findAll();
-        require_once(dirname(__FILE__) . '/../view/admin.phtml');
+        require_once(dirname(__FILE__) . '/../view/admin.php');
     }
 
 
@@ -103,10 +115,10 @@ class ControllerArticle                                         // ControllerArt
         require_once(dirname(__FILE__) . '/../view/article-modification.php');
     }
 
-    public function only_article()                         // function pour bouton articles dans page admin .
+    public function onlyArticle()                         // function pour bouton articles dans page admin .
     {
         $articles = $this->articleManager->findAll();
-        require_once(dirname(__FILE__) . '/../view/articles.phtml');
+        require_once(dirname(__FILE__) . '/../view/articles.php');
     }
 
 }

@@ -23,7 +23,7 @@
 
 }
 
-.titre-article1 { /* page detail.phtml */
+.titre-article1 { /* page detail.php */
 
     font-family: 'bree_serifitalic';
     color: black;
@@ -33,7 +33,7 @@
 
 
 
-.titreDetail { /* page detail.phtml */
+.titreDetail { /* page detail.php */
     padding-top: 20px;
     padding-right: 10%;
     text-shadow: 0px 0px 10px #003556;
@@ -78,7 +78,7 @@ background3 {
 .background4 {
     font-size: 1.3em;
     color: black;
-    background-color: #FACDA6;
+    background-color: #fff4df;
 }
 
 .bouton1{
@@ -98,11 +98,10 @@ background3 {
 
 }
 .drapeau {
-    background:#bfd70e;
-    border-radius:50%;
+
     width:30px;
     height:30px;
-    border:1px outset silver;
+
 }
 .erreur_404 {
     background-image: url("../img/detail-img.jpg");

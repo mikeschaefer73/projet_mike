@@ -23,6 +23,7 @@ class commentManager
         $response->execute();
     }
 
+
     public function findAll()
     {
         $response = $this->bdd->query('SELECT * FROM commentaire');
@@ -39,10 +40,10 @@ class commentManager
             print_r($response->errorInfo());
             return false;
         }
-        $_SESSION['msg'] = 'Commentaire suprimer avec succès !';
+        $_SESSION['msg'] = 'Commentaire supprimé avec succès ! !';
         } else {
-            $_SESSION['msg'] = 'Vous n\'êtes pas connecter en administrateur !';
-            include("./app/view/404.phtml");
+            $_SESSION['msg'] = 'Vous n\'êtes pas connecté en administrateur !';
+            include("./app/view/404.php");
             http_response_code(404);
             die;
         }
@@ -52,6 +53,15 @@ class commentManager
     {
         $id = intval($id['get']['id']);
         $responce = $this->bdd->prepare("UPDATE commentaire SET  flag = 1 WHERE id =:id");
+        if (!$responce->execute(array('id' => $id))) {
+            print_r($responce->errorInfo());
+            exit;
+        }
+    }
+    public function deFlag($id)
+    {
+        $id = intval($id['get']['id']);
+        $responce = $this->bdd->prepare("UPDATE commentaire SET  flag = 0 WHERE id =:id");
         if (!$responce->execute(array('id' => $id))) {
             print_r($responce->errorInfo());
             exit;

@@ -12,7 +12,7 @@
         <ul class="menu">
             <li><a class="ancre" href="../../index.php/">Accueil</a></li>
             <li><a class="ancre" href="../../index.php/#Billets">Billets</a><br/></li>
-            <li><a class="connect" href="../../index.php/<?php echo true === @$_SESSION['is_admin'] ? 'logout' : 'page_connect'; ?>"><?php echo true === @$_SESSION['is_admin'] ? 'Se déconnecter' : 'Se connecter'; ?></a></li>
+            <li><a class="connect" href="../../index.php/<?php echo true === @$_SESSION['is_admin'] ? 'logout' : 'pageConnect'; ?>"><?php echo true === @$_SESSION['is_admin'] ? 'Se déconnecter' : 'Se connecter'; ?></a></li>
             <li><a class="admin_page" href="return_admin">Admin</a></li>
         </ul>
     </nav>
