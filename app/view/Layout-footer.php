@@ -16,7 +16,7 @@
 <div id="footer">
 
 
-    <p class="copyright text-muted">Copyright © Jean Forteroche 2017</p>
+    <p class="copyright text-muted">Copyright © Jean Forteroche 2018</p>
 
 
 </div>

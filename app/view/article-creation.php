@@ -41,7 +41,7 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
                     <label for="author"><h4 style="color: white">Auteur</h4></label> : <input type="text" value="<?php if (isset($author)) {echo $author;} ?>" name="author" id="author"/><br>
                     <input class="btn btn-primary btn-lg btn3d glyphicon glyphicon-ok " type="submit" name="submit" value="Poster"/>
                 </form>
-                <p><a href='return_admin' style="color: #bd2130">Retour page Admin</a></p>
+                <p><a href='return_admin' style="color: #bd2130;font-size:1.5em;">Retour page Admin</a></p>
             </div>
 
             <footer>

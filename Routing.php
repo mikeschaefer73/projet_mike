@@ -5,7 +5,7 @@
 require_once(dirname(__FILE__) . "/app/Controller/ControllerArticle.php");
 require_once(dirname(__FILE__) . "/app/Controller/controllerComment.php");
 
-class routing extends ControllerArticle
+class Routing extends ControllerArticle
 {
     protected $ControllerArticle;
     protected $controllerComment;

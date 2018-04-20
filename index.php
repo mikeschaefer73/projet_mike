@@ -6,7 +6,7 @@ require_once(dirname(__FILE__) . "/Routing.php");
 
 
 
-$rouring = new routing;
+$rouring = new Routing;
 $rouring->routing();
 
 

@@ -38,6 +38,7 @@ html {
     padding-right: 200px;
     font-size: 0.9em;
     color: white;
+    padding-right: 0px;
 }
 
 .menu {
@@ -272,7 +273,7 @@ th{
 .admin_page {
 
     font-size: 0.9em;
-    color: white;
+    color: #78d739;
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) {

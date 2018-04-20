@@ -55,11 +55,10 @@ require_once(dirname(__FILE__) . "/../Controller/ControllerArticle.php"); ?>
                     ?>
                     <div class="cadre2">
                         <label for="pseudo"></label><br>
-                        <input class="form-group mb-2" type="text" value="<?php if (isset($_POST['pseudo'])) {echo $_POST['pseudo'];} ?>" name="pseudo" style="margin-left: 25px; id="pseudo" placeholder="pseudo"/>
+                        <input class="form-group mb-2" type="text" name="pseudo"<?php if (isset($_POST['pseudo'])) {echo $_POST['pseudo'];} ?> style="margin-left: 25px;  id="pseudo" placeholder="pseudo"/>
                         <br>
                         <textarea class="span4" id="content" name="content" placeholder="Laisser un commentaire"
-                                  rows="10" cols="70" style="margin-left: 25px;"><?php if (isset($_POST['content'])) {echo $_POST['content'];} ?>
-                        </textarea>
+                                  rows="10" cols="70" style="margin-left: 25px;"><?php if (isset($_POST['content'])) {echo $_POST['content'];} ?></textarea>
 
                         <input type="hidden" name="id_article" id="id_article"
                                value="<?php echo @(int)$article['id']; ?>"/>

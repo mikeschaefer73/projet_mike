@@ -41,7 +41,7 @@ class AdminManager
             http_response_code(404);
             die;
         }
-    }
+    }         // enregistrement mot de passe
 
 }
 

@@ -25,7 +25,7 @@ if ($_SESSION == false) {
                         <input class="btn btn-primary btn-lg btn3d glyphicon glyphicon-ok " type="submit" name="submit" value="Modifier"/>
                     </form>
                 </table>
-                <p><a href='return_admin' style="color: #bd2130">Retour page Admin</a></p>
+                <p><a href='return_admin' style="color: #bd2130;font-size:1.5em">Retour page Admin</a></p>
             </div>
             <?php include("Layout-footer.php"); ?>
         </div>

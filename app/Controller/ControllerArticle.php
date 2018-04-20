@@ -64,13 +64,13 @@ class ControllerArticle                                         // ControllerArt
             } else {
                 $_SESSION['msg'] = 'Tous les champs ne sont pas remplis';
             } include(dirname(__FILE__) . '/../view/parameter-admin.php');
-    }
+    }                        // changement de mot de pass
 
     public function articleModification()
     {
         $article = $this->articleManager->updateArticles($_POST['id'], $_POST['title'], $_POST['content']);
         $this->ListingArticle();
-    }
+    }              // update Articles
 
     public function newArticle($param_arr)
     {
@@ -84,14 +84,14 @@ class ControllerArticle                                         // ControllerArt
             $content = $param_arr['post']['content'];
             $author = $param_arr['post']['author'];
         } require_once(dirname(__FILE__) . '/../view/article-creation.php');
-    }
+    }            // creation article
 
     public function delete($id)
     {
 
         $article = $this->articleManager->deleteArticle($id);
         $this->listingArticle();
-    }
+    }                       // supresion article
 
     public function listingArticle()
     {

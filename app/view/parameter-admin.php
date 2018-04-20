@@ -35,8 +35,8 @@ if ($_SESSION == false){
                         <div class="remember-forgot">
                             <div class="row">
 
-                                <div class="col-md-6">
-                                    <p><h5><a href='return_admin' style="color: #bd2130">Retour page Admin</a></h5></p>
+                                <div>
+                                    <p><a href='return_admin' style="color: #bd2130;font-size:0.8em;">Retour page Admin</a></p>
                                 </div>
 
                             </div>
