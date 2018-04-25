@@ -37,19 +37,20 @@ class ControllerArticle                                         // ControllerArt
     }
 
 
-    public function identify()
+     public function identify()
     {
-        $passIsValid = false;
+
         if (!empty($_POST['pseudo']) && !empty($_POST['pass'])) {
             $adminManager = new AdminManager;
-            $passIsValid = $adminManager->checkPassword($_POST['pseudo'], $_POST['pass']);
+            $passIsValid = $adminManager->checkPassword($_POST['pseudo']);
+            $isAdmin = password_verify($_POST['pass'],$passIsValid['pass']);
         }
-
-        if ($passIsValid != false && $_POST != null && $passIsValid['pass'] == $_POST['pass']) {
+        if ($isAdmin) {
             $_SESSION['is_admin'] = true;
             $this->ListingArticle();
+        }
 
-        } else {
+        if (!$isAdmin) {
             $_SESSION['msg'] = 'Mauvais identifiant ou mot de pass ! !';
             include(dirname(__FILE__) . '/../view/connect.php');
         }
@@ -57,9 +58,10 @@ class ControllerArticle                                         // ControllerArt
 
     public function newPassword()
     {
-            if (!empty($_POST['pseudo']) && (!empty($_POST['pass']))) {
+            $hashPass = password_hash($_POST['pass'],PASSWORD_DEFAULT);
+            if (!empty($_POST['pseudo']) && (!empty($hashPass))) {
             $adminManager = new AdminManager;
-            $adminManager->changePassword($_POST['id'], $_POST['pseudo'],$_POST['pass']);
+            $adminManager->changePassword($_POST['id'], $_POST['pseudo'],$hashPass);
 
             } else {
                 $_SESSION['msg'] = 'Tous les champs ne sont pas remplis';
@@ -76,6 +78,7 @@ class ControllerArticle                                         // ControllerArt
     {
 
         if (!empty($param_arr) && ($param_arr['post']['title'] && ($param_arr['post']['content'] && ($param_arr['post']['author'])))) {
+
             $articles = $this->articleManager->insert($param_arr);
 
         } else if (!empty($param_arr) && empty($param_arr['post']['title'] && empty($param_arr['post']['content'] && empty($param_arr['post']['author'])))){

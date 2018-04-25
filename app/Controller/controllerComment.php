@@ -21,6 +21,8 @@ class ControllerComment extends ControllerArticle
     public function newComment($pseudo, $content, $id_article)            //  créer commentaire
     {
         $id_article = intval($_POST['id_article']);
+        $pseudo = strip_tags($_POST['pseudo']);
+        $content = strip_tags($_POST['content']);
 
         if (!empty($_POST) && $_POST['pseudo'] && $_POST['content'] && $_POST['id_article'] && !empty($_POST['pseudo']) && !empty($_POST['content']) && !empty($_POST['id_article'])) {
 

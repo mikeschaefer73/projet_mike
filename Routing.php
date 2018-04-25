@@ -74,7 +74,8 @@ class Routing extends ControllerArticle
                 $param_arr['get'] = $_GET;
             }
             if ($this->route == 'newComment') {
-                $this->controllerComment->newComment($_POST['pseudo'], $_POST['content'], $_POST['id_article']);
+                $content = htmlspecialchars($_POST['content']);
+                $this->controllerComment->newComment($_POST['pseudo'], $content, $_POST['id_article']);
             } else {
                 call_user_func(array($this->controllerComment, $this->route), $param_arr);
             }
@@ -83,7 +84,7 @@ class Routing extends ControllerArticle
         } else {
             include("./app/view/404.php");
             http_response_code(404);
-            die;
+            return;
 
         }
 
